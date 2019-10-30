@@ -1,4 +1,5 @@
 import React from 'react';
+//import {remote, shell} from 'electron';
 
 // Services
 import ConfigService from   '../../services/Config';
@@ -38,15 +39,33 @@ export default class RootViewController extends React.Component {
 
     }
 
-    onServiceUpdate() {
+    componentDidMount() {
+        window.addEventListener('keyup', this.onToggleBroadcast);
+    }
+
+    onServiceUpdate = () => {
         // Handles forcing the state update from a service.
         this.forceUpdate();
     }
 
+    onToggleBroadcast = (e) => {
+        if(e.key === "Escape") {
+            this.services.config.broadcast = !this.services.config.broadcast
+            // Scale Window In Broadcast
+            if (this.services.config.broadcast) {
+
+
+            // Restore Window Outside Broadcast
+            } else {
+
+
+            }
+        }
+    }
+
     render() {
         return <RootContext.Provider value={this.services}>
-            
-            <LayoutClassic>
+            <LayoutClassic broadcast={this.services.config.broadcast}>
                 <ConfigView/>
                 <ModuleView/>
             </LayoutClassic>

@@ -1,3 +1,5 @@
+@import '../../../../styles/variables.sass'
+
 .ort-layout-classic
     position: fixed
     top: 0
@@ -6,12 +8,30 @@
     width: 100%
     display: flex
     flex-grow: 1
-    padding: 10px
+    padding-top: 28px
     .ort-layout-classic-left
         display: block
         width: 250px
+        flex-shrink: 0
     .ort-layout-classic-right
         display: flex
         flex-direction: column
         padding: 0px 10px
         flex-grow: 1
+    .ort-layout-classic-broadcast
+        position: fixed
+        top: 0
+        left: 0
+        padding: 14px
+        text-align: center
+        font-size: 12px
+        line-height: 0
+        background: linear-gradient(360deg, $color-darker 0%, $color-darkest 100%)
+        color: $color-font
+        width: 100%
+        min-width: 640px
+    &.broadcast
+        .ort-layout-classic-left
+            display: none
+        .ort-layout-classic-broadcast
+            display: none
