@@ -1,0 +1,75 @@
+{
+  "name": "open-randomizer-tracker",
+  "version": "1.0.0",
+  "license": "BSD-4-Clause",
+  "author": "Anthony Mattera",
+  "private": true,
+  "main": "public/electron.js",
+  "dependencies": {
+    "clone": "^2.1.2",
+    "electron": "^5.0.6",
+    "electron-is-dev": "^1.1.0",
+    "electron-store": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-rnd": "^10.0.0",
+    "react-scripts": "3.0.1",
+    "require": "^2.4.20"
+  },
+  "devDependencies": {
+    "@rescripts/cli": "^0.0.13",
+    "@rescripts/rescript-env": "^0.0.11",
+    "concurrently": "^5.0.0",
+    "electron-builder": "^20.41.0",
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.13.0",
+    "eslint-plugin-react": "^7.13.0",
+    "wait-on": "^3.3.0"
+  },
+  "scripts": {
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "rescripts": [
+    "env"
+  ],
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "lint:fix": "eslint src/**/*.js --fix",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "appId": "open-randomizer-tracker",
+    "productName": "Open Randomizer Tracker",
+    "files": [
+      "dist/**/*"
+    ],
+    "linux": {
+      "icon": "./src/resources/icons/icon.png",
+      "target": "dir",
+      "category": "Multimedia"
+    },
+    "win": {
+      "icon": "./src/resources/icons/icon.ico",
+      "target": "dir"
+    },
+    "mac": {
+      "icon": "./src/resources/icons/icon.icns",
+      "target": "dmg"
+    }
+  }
+}

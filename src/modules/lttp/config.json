@@ -1,0 +1,203 @@
+{
+    "items":{
+        "bow":{
+            "label":"Bow",
+            "progressive":true,
+            "styles":["standard", "silver"]
+        },
+        "boomerang":{
+            "label":"Boomerang"
+        },
+        "boomerang-magical":{
+            "label":"Boomerang Magical"
+        },
+        "hookshot":{
+            "label":"Hookshot"
+        },
+        "bombs":{
+            "label":"Bombs"
+        },
+        "powder":{
+            "label":"Magic Powder"
+        },
+        "mushroom":{
+            "label":"Mushroom"
+        },
+        "icerod":{
+            "label":"Ice Rod"
+        },
+        "firerod":{
+            "label":"Fire Rod"
+        },
+        "bombos":{
+            "label":"Bombos"
+        },
+        "ether":{
+            "label":"Ether"
+        },
+        "quake":{
+            "label":"Quake"
+        },
+        "shovel":{
+            "label":"Shovel"
+        },
+        "lamp":{
+            "label":"Lamp"
+        },
+        "mc":{
+            "label":"Magic Hammer"
+        },
+        "ocarina":{
+            "label":"Ocarina"
+        },
+        "net":{
+            "label":"Bug-Catching Net"
+        },
+        "book":{
+            "label":"Book of Mudora"
+        },
+        "pearl":{
+            "label":"Moon Pearl"
+        },
+        "bottles":{
+            "label":"Bottles",
+            "counter":4
+        },
+        "somaria":{
+            "label":"Cane of Somaria"
+        },
+        "byrna":{
+            "label":"Cane of Byrna"
+        },
+        "cape":{
+            "label":"Magic Cape"
+        },
+        "mirror":{
+            "label":"Magic Mirror"
+        },
+        "glove":{
+            "label":"Gloves",
+            "progressive":true,
+            "styles":["power", "titan"]
+        },
+        "boots":{
+            "label":"Pegasus Boots"
+        },
+        "flippers":{
+            "label":"Zora's Flippers"
+        },
+        "doublemagic":{
+            "label":"Double Magic"
+        },
+        "sword":{
+            "label":"Sword",
+            "progressive":true,
+            "styles":["fighters", "master", "tempered", "golden"]
+        },
+        "shield":{
+            "label":"Shield",
+            "progressive":true,
+            "styles":["fighters", "fireball", "mirror"]
+        },
+        "tunic":{
+            "label":"Tunic",
+            "required":true,
+            "progressive":true,
+            "styles":["green", "blue", "red"]
+        }
+    },
+    "dungeons":{
+        "hc":{
+            "label":"Hyrule Castle",
+            "pendant":false,
+            "crystal":false,
+            "master":false,
+            "keys":1
+        },
+        "at":{
+            "label":"Agahnim's Tower",
+            "pendant":false,
+            "crystal":false,
+            "master":false,
+            "keys":2,
+            "required":true
+        },
+        "ep":{
+            "label":"Eastern Palace",
+            "pendant":"courage",
+            "crystal":false,
+            "master":true,
+            "keys":false
+        },
+        "dp":{
+            "label":"Desert Palace",
+            "pendant":"power",
+            "crystal":false,
+            "master":true,
+            "keys":1
+        },
+        "th":{
+            "label":"Tower of Hera",
+            "pendant":"wisdom",
+            "crystal":false,
+            "master":true,
+            "keys":1
+        },
+        "pd":{
+            "label":"Palace of Darkness",
+            "pendant":false,
+            "crystal":1,
+            "master":true,
+            "keys":6
+        },
+        "sp":{
+            "label":"Swamp Palace",
+            "pendant":false,
+            "crystal":2,
+            "master":true,
+            "keys":1
+        },
+        "sw":{
+            "label":"Skull Woods",
+            "pendant":false,
+            "crystal":3,
+            "master":true,
+            "keys":3
+        },
+        "tt":{
+            "label":"Thieves Town",
+            "pendant":false,
+            "crystal":4,
+            "master":true,
+            "keys":1
+        },
+        "ip":{
+            "label":"Ice Palace",
+            "pendant":false,
+            "crystal":5,
+            "master":true,
+            "keys":2
+        },
+        "mm":{
+            "label":"Misery Mire",
+            "pendant":false,
+            "crystal":6,
+            "master":true,
+            "keys":3
+        },
+        "tr":{
+            "label":"Turtle Rock",
+            "pendant":false,
+            "crystal":7,
+            "master":true,
+            "keys":4
+        },
+        "gt":{
+            "label":"Ganon's Tower",
+            "pendant":false,
+            "crystal":false,
+            "master":true,
+            "keys":4
+        }
+    }
+}
