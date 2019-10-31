@@ -4,6 +4,7 @@ import React from 'react';
 // Services
 import ConfigService from   '../../services/Config';
 import LanguageService from '../../services/Language';
+import ModuleService from '../../services/Module';
 
 // Views
 import ConfigView from '../Config';
@@ -22,17 +23,15 @@ export default class RootViewController extends React.Component {
 
     services = {
         config:null,
-        mappings:null,
-        profiles:null,
-        themes:null,
-        joystick:null,
-        language:null
+        language:null,
+        module:null
     }
 
     constructor() {
         super();
         this.services.config      = ConfigService.getInstance(this.onServiceUpdate);
         this.services.language    = LanguageService.getInstance();
+        this.services.module    = ModuleService.getInstance();
     }
 
     componentWillMount() {

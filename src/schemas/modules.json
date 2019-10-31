@@ -1,0 +1,11 @@
+{
+    "lttp":{
+        "label":"Legend of Zelda - A Link to the Past",
+        "layouts":{
+            "standard":"Standard",
+            "standard-triforce":"Standard Triforce",
+            "keysanity":"Keysanity",
+            "keysanity-triforce":"Keysanity Triforce"
+        }
+    }
+}

@@ -41,14 +41,14 @@
         "shovel":{
             "label":"Shovel"
         },
+        "ocarina":{
+            "label":"Ocarina"
+        },
         "lamp":{
             "label":"Lamp"
         },
         "mc":{
             "label":"Magic Hammer"
-        },
-        "ocarina":{
-            "label":"Ocarina"
         },
         "net":{
             "label":"Bug-Catching Net"
@@ -63,14 +63,14 @@
             "label":"Bottles",
             "counter":4
         },
+        "cape":{
+            "label":"Magic Cape"
+        },
         "somaria":{
             "label":"Cane of Somaria"
         },
         "byrna":{
             "label":"Cane of Byrna"
-        },
-        "cape":{
-            "label":"Magic Cape"
         },
         "mirror":{
             "label":"Magic Mirror"
@@ -104,6 +104,18 @@
             "required":true,
             "progressive":true,
             "styles":["green", "blue", "red"]
+        },
+        "pedestal":{
+            "label":"Pedestal"
+        },
+        "agahnim":{
+            "label":"Agahnim"
+        },
+        "gt":{
+            "label":"Ganon's Tower"
+        },
+        "go":{
+            "label":"Go"
         }
     },
     "dungeons":{

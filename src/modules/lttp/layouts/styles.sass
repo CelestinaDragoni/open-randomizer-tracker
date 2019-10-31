@@ -1,28 +1,44 @@
-.ort-lttp-keysanity
+.ort-lttp
     display: flex
     flex-grow: 0
     font-family: "c64"
+    -webkit-user-select: none
+    -webkit-user-drag: none
+    -webkit-app-region: no-drag
     .inactive
         filter: grayscale(50%) brightness(50%)
+    .maxed
+        color: #61D361
 
-.ort-lttp-keysanity-items
-    width: 270px
+.ort-lttp-items
+    width: 295px
+    height: 205px
     display: flex
     flex-wrap: wrap
     div
-        padding: 5px
+        position: relative
+        top: 0
+        left 0
+        padding: 0px 10px 10px 0px
         img
             width: 32px
             height: 32px
-            image-rendering: pixelated
+            cursor: pointer
+        span
+            position: absolute
+            top: 0
+            right: 3px
+    &.keysanity
+        height: 235px
+        div
+            padding: 0px 10px 18px 0px
 
-.ort-lttp-keysanity-dungeons
+.ort-lttp-dungeons
     height: 100%
     font-size: 16px
     tbody
         tr
             td
-                
                 text-transform: uppercase
                 padding: 1px 5px
                 text-align: center
@@ -32,4 +48,5 @@
 
     img
         vertical-align: top
+        
     

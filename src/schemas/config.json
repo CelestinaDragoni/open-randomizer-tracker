@@ -12,5 +12,5 @@
     "zoom":1.0,
     "background":"#000000",
     "module":"lttp",
-    "moduleLayout":"keysanity"
+    "moduleLayout":"standard"
 }

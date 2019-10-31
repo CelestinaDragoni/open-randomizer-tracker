@@ -11,6 +11,12 @@ export default class ConfigView extends React.Component {
     static contextType = RootContext;
 
     render() {
+
+        const moduleKey = this.context.config.module;
+        const moduleLayout = this.context.config.moduleLayout;
+        const moduleOptions = this.context.module.options();
+        const moduleLayoutOptions = this.context.module.layoutOptions(moduleKey);
+
         return <div className='ort-sidebar-profile'>
 
             <HeaderSidebarPrimary>Configuration</HeaderSidebarPrimary>
@@ -23,13 +29,13 @@ export default class ConfigView extends React.Component {
                         <strong>Module:</strong>
                     </Container>
                     <Container>
-                        <Select/>
+                        <Select options={moduleOptions}/>
                     </Container>
                      <Container>
                         <div><strong>Layout:</strong></div>
                     </Container>
                     <Container final>
-                        <Select/>
+                        <Select options={moduleLayoutOptions}/>
                     </Container>
 
                 <HeaderSidebarSecondary>Options</HeaderSidebarSecondary>

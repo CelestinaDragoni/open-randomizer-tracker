@@ -1,9 +1,7 @@
 import React from "react";
 import clone from 'clone';
 
-import KeysanityTriforce from './layouts/keysanity-triforce';
 import Keysanity from './layouts/keysanity';
-import StandardTriforce from './layouts/standard-triforce';
 import Standard from './layouts/standard';
 
 import Config from './config.json';
@@ -20,16 +18,6 @@ export default class Module_LinkToThePast_Controller extends React.Component {
     
     constructor() {
         super();
-        this.config = Config;
-    }
-
-    componentWillMount() {
-        this.currentLayout = this.context.config.moduleLayout;
-    }
-
-    componentWillUnmount() {
-        this.state = {};
-        this.currentLayout = null;
     }
 
     render() {
@@ -39,16 +27,16 @@ export default class Module_LinkToThePast_Controller extends React.Component {
         let layoutComponent = null;
         switch(moduleLayout) {
             case 'keysanity-triforce':
-                layoutComponent = <KeysanityTriforce controller={this}/>;
+                layoutComponent = <Keysanity config={Config} triforce/>;
                 break;
             case 'keysanity':
-                layoutComponent = <Keysanity controller={this}/>;
+                layoutComponent = <Keysanity config={Config}/>;
                 break;
             case 'standard-triforce':
-                layoutComponent = <StandardTriforce controller={this}/>;
+                layoutComponent = <Standard config={Config} triforce/>;
                 break;
             default:
-                layoutComponent = <Standard controller={this}/>;
+                layoutComponent = <Standard config={Config}/>;
         }
 
         return layoutComponent;

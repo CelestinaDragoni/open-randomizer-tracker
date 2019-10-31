@@ -7,7 +7,6 @@
   "main": "public/electron.js",
   "dependencies": {
     "clone": "^2.1.2",
-    "electron": "^5.0.6",
     "electron-is-dev": "^1.1.0",
     "electron-store": "^3.2.0",
     "node-sass": "^4.12.0",
@@ -18,20 +17,25 @@
     "require": "^2.4.20"
   },
   "devDependencies": {
-    "@rescripts/cli": "^0.0.13",
-    "@rescripts/rescript-env": "^0.0.11",
+    "@rescripts/cli": "^0.0.10",
+    "@rescripts/rescript-env": "^0.0.5",
     "concurrently": "^5.0.0",
+    "electron": "^5.0.6",
     "electron-builder": "^20.41.0",
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.13.0",
     "eslint-plugin-react": "^7.13.0",
+    "typescript": "^3.3.3333",
     "wait-on": "^3.3.0"
   },
   "scripts": {
     "start": "rescripts start",
     "build": "rescripts build",
     "test": "rescripts test",
-    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\""
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "build -l"
   },
   "rescripts": [
     "env"
@@ -60,7 +64,7 @@
     ],
     "linux": {
       "icon": "./src/resources/icons/icon.png",
-      "target": "dir",
+      "target": "appimage",
       "category": "Multimedia"
     },
     "win": {
