@@ -18,8 +18,6 @@ export default class ModuleService {
 
         const options = [];
 
-        console.log(Modules)
-
         for (const key in Modules) {
             const module = Modules[key];
             options.push({

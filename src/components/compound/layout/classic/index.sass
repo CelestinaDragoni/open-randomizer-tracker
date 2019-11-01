@@ -8,16 +8,17 @@
     width: 100%
     display: flex
     flex-grow: 1
-    padding-top: 28px
     .ort-layout-classic-left
         display: block
         width: 250px
         flex-shrink: 0
+        z-index: 999
     .ort-layout-classic-right
         display: flex
         flex-direction: column
         padding: 0px 10px
         flex-grow: 1
+        padding-top: 25px
     .ort-layout-classic-broadcast
         position: fixed
         top: 0
@@ -29,10 +30,13 @@
         background: linear-gradient(360deg, $color-darker 0%, $color-darkest 100%)
         color: $color-font
         width: 100%
-        min-width: 640px
+        min-width: 700px
+        padding-left: 250px
     &.broadcast
         padding-top: 0
         .ort-layout-classic-left
             display: none
+        .ort-layout-classic-right
+            padding: 0
         .ort-layout-classic-broadcast
             display: none

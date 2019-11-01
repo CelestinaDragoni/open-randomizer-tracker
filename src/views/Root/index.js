@@ -63,12 +63,16 @@ export default class RootViewController extends React.Component {
     }
 
     render() {
+
+        const backgroundColor = this.services.config.backgroundColor;
+
         return <RootContext.Provider value={this.services}>
-            <LayoutClassic broadcast={this.services.config.broadcast}>
+            <LayoutClassic broadcast={this.services.config.broadcast} backgroundColor={backgroundColor}>
                 <ConfigView/>
                 <ModuleView/>
             </LayoutClassic>
         </RootContext.Provider>
+        
     }
 
 }

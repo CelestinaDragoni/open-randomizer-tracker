@@ -5,9 +5,14 @@ export default class LayoutClassic extends React.PureComponent {
 
     render() {
 
+        const style = {};
+        if (this.props.backgroundColor && this.props.backgroundColor !== '') {
+            style.backgroundColor = this.props.backgroundColor;
+        }
+
         const classBroadcast = (this.props.broadcast) ? 'broadcast' : '';
 
-        return <div className={`ort-layout-classic ${classBroadcast}`}>
+        return <div className={`ort-layout-classic ${classBroadcast}`} style={style}>
             <div className='ort-layout-classic-left'>
                 {this.props.children[0]}
             </div>

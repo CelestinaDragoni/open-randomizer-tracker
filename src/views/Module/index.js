@@ -10,6 +10,9 @@ export default class ModuleView extends React.Component {
 
     render() {
 
+        const zoom = this.context.config.zoom;
+        const style = {'transform':`scale(${zoom})`};
+
         let moduleComponent = null;
 
         switch(this.context.config.module) {
@@ -21,7 +24,7 @@ export default class ModuleView extends React.Component {
         }
 
         return <div className='ort-module'>
-            <div className='ort-module-wrapper'>
+            <div className='ort-module-wrapper' style={style}>
                 {moduleComponent}
             </div>
         </div>;

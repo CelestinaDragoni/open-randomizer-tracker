@@ -105,9 +105,6 @@
             "progressive":true,
             "styles":["green", "blue", "red"]
         },
-        "pedestal":{
-            "label":"Pedestal"
-        },
         "agahnim":{
             "label":"Agahnim"
         },
@@ -116,6 +113,10 @@
         },
         "go":{
             "label":"Go"
+        },
+        "triforce":{
+            "label":"Triforce",
+            "counter":20
         }
     },
     "dungeons":{

@@ -14,38 +14,10 @@ export default class ConfigService {
         return ConfigService.instance = new ConfigService(updateHandler);  
     }
 
+    // Getters
     constructor(updateHandler) {
         this._data = clone(ConfigDefault);
         this.onUpdate = updateHandler;
-    }
-
-    // Getters
-    get bounds() {
-        return this._data.bounds;
-    }
-
-    get boundsX() {
-        return this._data.bounds.x;
-    }
-
-    get boundsY() {
-        return this._data.bounds.y;
-    }
-
-    get boundsHeight() {
-        return this._data.bounds.height;
-    }
-
-    get boundsWidth() {
-        return this._data.bounds.width;
-    }
-
-    get loading() {
-        return this._data.loading
-    }
-
-    get dev() {
-        return this._data.dev ? true : false;
     }
 
     get broadcast() {
@@ -63,56 +35,33 @@ export default class ConfigService {
     get locale() {
         return (this._data.locale) ? this._data.locale : 'en';
     }
-    
+
+    get backgroundColor() {
+        return this._data.backgroundColor;
+    }
+
+    get zoom() {
+        return this._data.zoom;
+    }
+
+    get alwaysOnTop() {
+        return this._data.alwaysOnTop;
+    }
+
 
     // Setters
-    set bounds(v) {
-        this._data.bounds = v;
-        this._writeConfig();
-    }
-
-    set boundsX(v) {
-        this._data.bounds.x = parseInt(v, 10);
-        this._writeConfig();
-    }
-
-    set boundsY(v) {
-        this._data.bounds.y = parseInt(v, 10);
-        this._writeConfig();
-    }
-
-    set boundsHeight(v) {
-        this._data.bounds.height = parseInt(v, 10);
-        this._writeConfig();
-    }
-
-    set boundsWidth(v) {
-        this._data.bounds.width = parseInt(v, 10);
-        this._writeConfig();
-    }
-
-    set loading(v) {
-        this._data.loading = v ? true : false;
-        this._writeConfig();
-    }
-
-    set dev(v) {
-        this._data.dev = v;
-        this._writeConfig();
-    }
-
     set broadcast(v) {
         this._data.broadcast = v;
         this._writeConfig();
     }
 
-    set profile(v) {
-        this._data.profile = v;
+    set module(v) {
+        this._data.module = v;
         this._writeConfig();
     }
 
-    set directory(v) {
-        this._data.directory = v;
+    set moduleLayout(v) {
+        this._data.moduleLayout = v;
         this._writeConfig();
     }
 
@@ -124,25 +73,28 @@ export default class ConfigService {
         this._writeConfig();
     }
 
-    set panels(v) {
-        this._data.panel = v;
+    set backgroundColor(v) {
+        v = v.trim();
+
+        if (v.length > 7) {
+            v = v.substring(0, 7);
+        }
+
+        this._data.backgroundColor = v;
         this._writeConfig();
     }
 
-    set panelMapper(v) {
-        this._data.panels.mapper = v ? true : false;
+    set zoom(v) {
+        this._data.zoom = v;
         this._writeConfig();
     }
 
-    set panelTester(v) {
-        this._data.panels.tester = v ? true : false;
+    set alwaysOnTop(v) {
+        this._data.alwaysOnTop = v;
         this._writeConfig();
     }
 
-    set panelProfile(v) {
-        this._data.panels.profile = v ? true : false;
-        this._writeConfig();
-    }
+
 
     _writeConfig() {
         this.onUpdate();

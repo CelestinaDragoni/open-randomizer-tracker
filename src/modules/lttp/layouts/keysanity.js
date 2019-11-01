@@ -35,13 +35,15 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onMarkerRightClick = (key, dungeon) => {
 
-        this.state.dungeons[key].marker += 1;
+        const state = this.state;
 
-        if (this.state.dungeons[key].marker === this.markerEnum.length) {
-            this.state.dungeons[key].marker = 0;
+        state.dungeons[key].marker += 1;
+
+        if (state.dungeons[key].marker === this.markerEnum.length) {
+            state.dungeons[key].marker = 0;
         }
 
-        this.forceUpdate();
+        this.setState(state);
 
     }
 
@@ -53,8 +55,9 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onMarkerLeftClick = (key, dungeon) => {
 
-        this.state.dungeons[key].active = !this.state.dungeons[key].active;
-        this.forceUpdate();
+        const state = this.state;
+        state.dungeons[key].active = !state.dungeons[key].active;
+        this.setState(state);
 
     }
 
@@ -66,8 +69,11 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onMasterLeftClick = (key, dungeon) => {
 
-        this.state.dungeons[key].master = !this.state.dungeons[key].master;
-        this.forceUpdate();
+        const state = this.state;
+
+        state.dungeons[key].master = !state.dungeons[key].master;
+
+        this.setState(state);
 
     }
 
@@ -79,13 +85,15 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onKeyRightClick = (key, dungeon) => {
 
+        const state = this.state;
+
         if (this.state.dungeons[key].keys === 0) {
-            this.state.dungeons[key].keys = dungeon.keys;
+            state.dungeons[key].keys = dungeon.keys;
         } else {
-            this.state.dungeons[key].keys -= 1;
+            state.dungeons[key].keys -= 1;
         }
 
-        this.forceUpdate();
+        this.setState(state);
 
     }
 
@@ -97,37 +105,63 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onKeyLeftClick = (key, dungeon) => {
 
-        if (dungeon.keys  === this.state.dungeons[key].keys) {
-            this.state.dungeons[key].keys = 0;
+        const state = this.state;
+
+        if (dungeon.keys  === state.dungeons[key].keys) {
+            state.dungeons[key].keys = 0;
         } else {
-            this.state.dungeons[key].keys += 1;
+            state.dungeons[key].keys += 1;
         }
 
-        this.forceUpdate();
+        this.setState(state);
 
     }
 
     /**
-     * Changes the style for progressive items such as tunics and swords.
+     * Changes the style for progressive items such as tunics and swords. Handles counting down as well.
      * @param {string} key - Item Key
      * @param {object} item - Item Properties
      * @return {void}
      */
     onItemRightClick = (key, item) => {
 
-        if (item.progressive) {
+        const state = this.state;
 
-            let level = this.state.items[key].level;
+        let counter = 0;
+        let active = state.items[key].active;
+
+        if (item.counter) {
+
+            counter = state.items[key].counter;
+            counter -= 1;
+            active = true;
+
+            if (counter < 0) {
+                counter += 1;
+            }
+            if (counter <= 0) {
+                active = false;
+            }
+
+            state.items[key].active = active;
+            state.items[key].counter = counter;
+            
+
+        } else if (item.progressive) {
+
+            let level = state.items[key].level;
             level = level+1;
 
             if (level >= item.styles.length) {
                 level = 0;
             }
 
-            this.state.items[key].level = level;
-            this.forceUpdate();
+            
+            state.items[key].level = level;
 
         }
+
+        this.setState(state);
 
     }
 
@@ -139,26 +173,25 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onItemLeftClick = (key, item) => {
 
-        let active = !this.state.items[key].active;
+        const state = this.state;
+        let active = !state.items[key].active;
         let counter = 0;
 
         if (item.counter) {
 
-            counter = this.state.items[key].counter;
-            counter = counter+1;
+            counter = state.items[key].counter;
+            counter += 1;
+            active = true;
 
             if (counter > item.counter) {
-                counter = 0;
-                active = false;
-            } else {
-                active = true;
+                counter -= 1;
             }
 
         }
 
-        this.state.items[key].active = active;
-        this.state.items[key].counter = counter; 
-        this.forceUpdate();
+        state.items[key].active = active;
+        state.items[key].counter = counter; 
+        this.setState(state);
     }
 
 
@@ -172,6 +205,9 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
         const elements = [];
 
         for (const key in config.items) {
+            if (key === 'triforce' && !this.props.triforce) {
+                continue;
+            }
             const item = config.items[key];
             const element = this._renderItem(key, item, state);
             elements.push(element);
@@ -224,6 +260,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
                 if (counter > 0) {
                     elementCounter = <span>{counter}</span>;
                 }
+                onRightClick = () => this.onItemRightClick(key, item);
             }
 
             // Assemble
