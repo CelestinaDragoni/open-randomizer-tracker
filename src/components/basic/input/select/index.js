@@ -23,7 +23,7 @@ export default class Select extends React.Component {
             }
         }
 
-        return <select className='ort-input-select' onChange={this.onChange}>
+        return <select value={this.props.value} className='ort-input-select' onChange={this.onChange}>
             {options}
         </select>;
 

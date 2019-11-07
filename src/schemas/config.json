@@ -14,5 +14,8 @@
     "module":"lttp",
     "moduleLayout":"keysanity",
     "alwaysOnTop":false,
-    "timer":false
+    "timer":true,
+    "timerFontSize":32,
+    "gameTitle":"",
+    "gameTitleFontSize":24
 }

@@ -48,6 +48,22 @@ export default class ConfigService {
         return this._data.alwaysOnTop;
     }
 
+    get timer() {
+        return this._data.timer;
+    }
+
+    get timerFontSize() {
+        return this._data.timerFontSize;
+    }
+
+    get gameTitle() {
+        return this._data.gameTitle;
+    }
+
+    get gameTitleFontSize() {
+        return this._data.gameTitleFontSize;
+    }
+
 
     // Setters
     set broadcast(v) {
@@ -91,6 +107,26 @@ export default class ConfigService {
 
     set alwaysOnTop(v) {
         this._data.alwaysOnTop = v;
+        this._writeConfig();
+    }
+
+    set timer(v) {
+        this._data.timer = v;
+        this._writeConfig();
+    }
+
+    set timerFontSize(v) {
+        this._data.timerFontSize = v;
+        this._writeConfig();
+    }
+
+    set gameTitle(v) {
+        this._data.gameTitle = v;
+        this._writeConfig();
+    }
+
+    set gameTitleFontSize(v) {
+        this._data.gameTitleFontSize = v;
         this._writeConfig();
     }
 

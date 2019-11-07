@@ -32,17 +32,40 @@ export default class ConfigView extends React.Component {
         this.context.config.alwaysOnTop = val;
     }
 
+    onChangeTimer = (val) => {
+        this.context.config.timer = val;
+    }
+
+    onChangeTimerFontSize = (val) => {
+        this.context.config.timerFontSize = val;
+    }
+
+    onChangeGameTitle = (val) => {
+        this.context.config.gameTitle = val;
+    }
+
+    onChangeGameTitleFontSize = (val) => {
+        this.context.config.gameTitleFontSize = val;
+    }
+
     render() {
 
-        const moduleKey = this.context.config.module;
-        const moduleLayout = this.context.config.moduleLayout;
+        const config = this.context.config;
+
+        const moduleKey = config.module;
+        const moduleLayout = config.moduleLayout;
         const moduleOptions = this.context.module.options();
+        console.log(moduleLayout)
         const moduleLayoutOptions = this.context.module.layoutOptions(moduleKey);
 
-        const backgroundColor = this.context.config.backgroundColor;
-        const zoom = this.context.config.zoom;
+        const backgroundColor = config.backgroundColor;
+        const zoom = config.zoom;
         const zoomPercentage = zoom*100;
-        const alwaysOnTop = this.context.config.alwaysOnTop;
+        const alwaysOnTop = config.alwaysOnTop;
+        const timer = config.timer;
+        const timerFontSize = config.timerFontSize;
+        const gameTitle = config.gameTitle;
+        const gameTitleFontSize = config.gameTitleFontSize;
 
         return <div className='ort-sidebar-profile'>
 
@@ -85,18 +108,31 @@ export default class ConfigView extends React.Component {
                     <Container final>
                         <Slider value={zoom} min={.5} max={2} step={.25} onChange={this.onChangeZoom}/>
                     </Container>
-                <HeaderSidebarSecondary>Extras</HeaderSidebarSecondary>
+                <HeaderSidebarSecondary>Timer</HeaderSidebarSecondary>
                     <Container>
                         <strong>Enable Timer</strong>
                     </Container>
                     <Container>
-                        <Toggle value={alwaysOnTop} onChange={this.onChangeAlwaysOnTop}/>
+                        <Toggle value={timer} onChange={this.onChangeTimer}/>
                     </Container>
+                    <Container>
+                        <strong>Timer Font Size ({timerFontSize}px)</strong>
+                    </Container>
+                    <Container final>
+                        <Slider value={timerFontSize} min={12} max={75} step={1} onChange={this.onChangeTimerFontSize}/>
+                    </Container>
+                <HeaderSidebarSecondary>Current Game Title</HeaderSidebarSecondary>
                     <Container>
                         <strong>Game Title</strong>
                     </Container>
                     <Container>
-                        <Input value={backgroundColor} onChange={this.onChangeBackgroundColor}/>
+                        <Input value={gameTitle} onChange={this.onChangeGameTitle}/>
+                    </Container>
+                    <Container>
+                        <strong>Game Title Font Size ({gameTitleFontSize}px)</strong>
+                    </Container>
+                    <Container final>
+                        <Slider value={gameTitleFontSize} min={12} max={75} step={1} onChange={this.onChangeGameTitleFontSize}/>
                     </Container>
 
             </div>

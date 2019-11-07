@@ -10,23 +10,24 @@
     "electron-is-dev": "^1.1.0",
     "electron-store": "^3.2.0",
     "node-sass": "^4.12.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "2.1.5",
     "react-rnd": "^10.0.0",
-    "react-scripts": "3.0.1",
     "require": "^2.4.20"
   },
   "devDependencies": {
     "@rescripts/cli": "^0.0.10",
     "@rescripts/rescript-env": "^0.0.5",
-    "concurrently": "^5.0.0",
-    "electron": "^5.0.6",
-    "electron-builder": "^20.41.0",
+    "concurrently": "^4.1.0",
+    "electron": "^4.0.6",
+    "electron-builder": "^20.38.5",
+    "typescript": "^3.3.3333",
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.13.0",
     "eslint-plugin-react": "^7.13.0",
     "typescript": "^3.3.3333",
-    "wait-on": "^3.3.0"
+    "wait-on": "^3.2.0"
   },
   "scripts": {
     "start": "rescripts start",
