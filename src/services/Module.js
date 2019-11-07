@@ -1,4 +1,3 @@
-import clone from 'clone';
 import Modules from '../schemas/modules.json';
 
 export default class ModuleService {

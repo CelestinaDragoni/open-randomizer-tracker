@@ -22,12 +22,16 @@
     "plugins": [
         "react"
     ],
-
+    "settings":{
+        "react":{
+            "version": "detect"
+        }
+    },
     "rules": {
         "react/no-direct-mutation-state":0,
         "react/prop-types":0,
         "indent": [
-            "warn",
+            1,
             4
         ],
         "camelcase": [

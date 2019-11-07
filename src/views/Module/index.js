@@ -22,11 +22,11 @@ export default class ModuleView extends React.Component {
         let moduleComponent = null;
 
         switch(this.context.config.module) {
-            case 'lttp':
-                moduleComponent = <LinkToThePastModule/>;
-                break;
-            default:
-                moduleComponent = <div>Invalid Module</div>;
+        case 'lttp':
+            moduleComponent = <LinkToThePastModule/>;
+            break;
+        default:
+            moduleComponent = <div>Invalid Module</div>;
         }
 
         let elementGameTitle = null;

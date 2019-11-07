@@ -22,7 +22,7 @@ export default class LayoutClassic extends React.PureComponent {
             <div className='ort-layout-classic-broadcast'>
                 You are Currently In Configuration Mode, Press ESC to Enter Broadcast Mode
             </div>
-        </div>
+        </div>;
     }
 
 }

@@ -45,9 +45,9 @@
     "webpack-glob-entry": "^2.1.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server",
     "electron": "electron .",
-    "fix": "lint --fix",
+    "fix": "eslint  src/**/*.js --fix",
     "build": "webpack"
   },
   "eslintConfig": {

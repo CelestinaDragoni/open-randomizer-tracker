@@ -7,7 +7,7 @@ export default class Container extends React.PureComponent {
 
         let classes = "";
         if (this.props.final) {
-            classes="ort-container-final"
+            classes="ort-container-final";
         }
 
         let elements = [];

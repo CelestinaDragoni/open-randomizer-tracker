@@ -24,11 +24,11 @@ export default class Timer extends React.Component {
         // Don't like this, should be able to use % operator for this.
         let ms = Date.now() - this.timeStart;
         let h = Math.floor(ms/3600000);
-            ms -= h*3600000;
+        ms -= h*3600000;
         let m = Math.floor(ms/60000);
-            ms -= m*60000;
+        ms -= m*60000;
         let s = Math.floor(ms/1000);
-            ms -= s*1000;
+        ms -= s*1000;
 
         // Format
         h = h.toString().padStart(2, '0');
@@ -73,7 +73,7 @@ export default class Timer extends React.Component {
         }
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         window.addEventListener('keyup', this.onKeyUp);
     }
 
@@ -87,7 +87,7 @@ export default class Timer extends React.Component {
             'fontSize':`${this.props.fontSize}px`
         };
         return <div className='ort-timer' style={style}>
-                {this.state.timeFormat}
+            {this.state.timeFormat}
         </div>;
     }
 

@@ -130,60 +130,60 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
 
         return <div className='ort-lttp-items'>
             {elements}
-        </div>
+        </div>;
     }
 
-        /**
-         * Private function, Renders the item view and actions.
-         * @param {string} key - Item Key
-         * @param {object} item - Item properties
-         * @param {object} state - The current state of this class
-         * @return {ReactDOM}
-         */
-        _renderItem(key, item, state) {
+    /**
+     * Private function, Renders the item view and actions.
+     * @param {string} key - Item Key
+     * @param {object} item - Item properties
+     * @param {object} state - The current state of this class
+     * @return {ReactDOM}
+     */
+    _renderItem(key, item, state) {
 
-            // Elements and Classes
-            let icon = `${key}.png`;
-            let elementCounter = null;
-            let classInactive = '';
+        // Elements and Classes
+        let icon = `${key}.png`;
+        let elementCounter = null;
+        let classInactive = '';
 
-            // Actions
-            let onClick = () => this.onItemLeftClick(key, item);
-            let onRightClick = null;
+        // Actions
+        let onClick = () => this.onItemLeftClick(key, item);
+        let onRightClick = null;
 
-            // State
-            const {active, level, counter} = state.items[key];
+        // State
+        const {level, counter} = state.items[key];
 
-            // If item is progressive, get the right icon per the style.
-            if (item.progressive) {
-                icon = `${key}/${item.styles[level]}.png`;
-                onRightClick = () => this.onItemRightClick(key, item);
-            }
-
-            // If item is not active, gray it out.
-            if (state.items[key].active === false && !item.required) {
-                classInactive = 'inactive'
-            }
-
-            // If item is required, cannot be grayed out (tunic only)
-            if (item.required) {
-                onClick = null;
-            }
-
-            // If item has a counter, display the count (bottles only)
-            if (item.counter) {
-                if (counter > 0) {
-                    elementCounter = <span>{counter}</span>;
-                }
-            }
-
-            // Assemble
-            return <div key={key}>
-                <img className={classInactive} onClick={onClick} onContextMenu={onRightClick} src={`resources/modules/lttp/items/${icon}`}/>
-                {elementCounter}
-            </div>;
-
+        // If item is progressive, get the right icon per the style.
+        if (item.progressive) {
+            icon = `${key}/${item.styles[level]}.png`;
+            onRightClick = () => this.onItemRightClick(key, item);
         }
+
+        // If item is not active, gray it out.
+        if (state.items[key].active === false && !item.required) {
+            classInactive = 'inactive';
+        }
+
+        // If item is required, cannot be grayed out (tunic only)
+        if (item.required) {
+            onClick = null;
+        }
+
+        // If item has a counter, display the count (bottles only)
+        if (item.counter) {
+            if (counter > 0) {
+                elementCounter = <span>{counter}</span>;
+            }
+        }
+
+        // Assemble
+        return <div key={key}>
+            <img className={classInactive} onClick={onClick} onContextMenu={onRightClick} src={`resources/modules/lttp/items/${icon}`}/>
+            {elementCounter}
+        </div>;
+
+    }
 
     /**
      * Renders the dungeon table.
@@ -216,35 +216,35 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
 
     }
 
-        /**
-         * Private function, Renders the dungeon markers and binds actions.
-         * @param {string} key - Dungeon Key
-         * @param {object} item - Dungeon properties
-         * @param {object} state - The current state of this class
-         * @return {ReactDOM}
-         */
-        _renderMarker(key, dungeon, state) {
+    /**
+     * Private function, Renders the dungeon markers and binds actions.
+     * @param {string} key - Dungeon Key
+     * @param {object} item - Dungeon properties
+     * @param {object} state - The current state of this class
+     * @return {ReactDOM}
+     */
+    _renderMarker(key, dungeon, state) {
 
-            let element = null;
-            let elementClass = null;
-            let onLeftClick = null;
-            let onRightClick = null;
+        let element = null;
+        let elementClass = null;
+        let onLeftClick = null;
+        let onRightClick = null;
 
-            if (dungeon.crystal !== false || dungeon.pendant !== false) {
+        if (dungeon.crystal !== false || dungeon.pendant !== false) {
 
-                const inactive = state.dungeons[key].active ? '' : 'inactive';
-                const icon = this.markerEnum[state.dungeons[key].marker] + '.png';
+            const inactive = state.dungeons[key].active ? '' : 'inactive';
+            const icon = this.markerEnum[state.dungeons[key].marker] + '.png';
 
-                element = <img className={inactive} src={'resources/modules/lttp/icons/' + icon}/>
-                elementClass = 'action';
+            element = <img className={inactive} src={'resources/modules/lttp/icons/' + icon}/>;
+            elementClass = 'action';
 
-                onLeftClick = () => this.onMarkerLeftClick(key, dungeon);
-                onRightClick = () => this.onMarkerRightClick(key, dungeon);
-            }
-
-            return <td className={elementClass} onClick={onLeftClick} onContextMenu={onRightClick}>{element}</td>;
-
+            onLeftClick = () => this.onMarkerLeftClick(key, dungeon);
+            onRightClick = () => this.onMarkerRightClick(key, dungeon);
         }
+
+        return <td className={elementClass} onClick={onLeftClick} onContextMenu={onRightClick}>{element}</td>;
+
+    }
 
     /**
      * Renders React View

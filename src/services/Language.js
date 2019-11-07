@@ -26,7 +26,7 @@ export default class LanguageService {
 
     _(key) {
 
-        let locale = ConfigService.getInstance().locale;
+        const locale = ConfigService.getInstance().locale;
         const fn = `_get${locale.toUpperCase()}`;
         let string = false;
 

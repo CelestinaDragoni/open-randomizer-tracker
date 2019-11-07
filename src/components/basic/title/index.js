@@ -7,7 +7,7 @@ export default class GameTitle extends React.PureComponent {
         const style = {
             'fontSize':`${this.props.fontSize}px`
         };
-        return <div className='ort-game-title' style={style}>{this.props.children}</div>
+        return <div className='ort-game-title' style={style}>{this.props.children}</div>;
     }
 
 }

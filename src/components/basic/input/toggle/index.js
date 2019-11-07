@@ -12,8 +12,8 @@ export default class Toggle extends React.Component {
     render() {
         const checked = this.props.value ? "checked" : "";
         return <label className="ort-toggle" >
-          <input type="checkbox" checked={checked} readOnly/>
-          <span className="toggle round" onClick={this.onChange} ></span>
+            <input type="checkbox" checked={checked} readOnly/>
+            <span className="toggle round" onClick={this.onChange}></span>
         </label>;
     }
 

@@ -49,7 +49,7 @@ export default class RootViewController extends React.Component {
 
     onToggleBroadcast = (e) => {
         if(e.key === "Escape") {
-            this.services.config.broadcast = !this.services.config.broadcast
+            this.services.config.broadcast = !this.services.config.broadcast;
             // Scale Window In Broadcast
             if (this.services.config.broadcast) {
 
@@ -71,7 +71,7 @@ export default class RootViewController extends React.Component {
                 <ConfigView/>
                 <ModuleView/>
             </LayoutClassic>
-        </RootContext.Provider>
+        </RootContext.Provider>;
         
     }
 
