@@ -50,3 +50,5 @@ typings/
 .dynamodb/
 /build
 /release
+/dist
+/dist/*

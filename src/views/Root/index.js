@@ -34,7 +34,7 @@ export default class RootViewController extends React.Component {
         this.services.module    = ModuleService.getInstance();
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
 
     }
 

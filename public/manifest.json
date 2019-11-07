@@ -1,6 +1,6 @@
 {
-  "short_name": "Open Joystick Display",
-  "name": "Open Joystick Display",
+  "short_name": "Open Randomizer Tracker",
+  "name": "Open Randomizer Tracker",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

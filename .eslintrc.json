@@ -1,9 +1,13 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "es6": true
     },
-    "extends": "google",
+    "extends": [
+        "plugin:react/recommended",
+        "google"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -20,6 +24,30 @@
     ],
 
     "rules": {
-        "react/no-direct-mutation-state":0
+        "react/no-direct-mutation-state":0,
+        "react/prop-types":0,
+        "indent": [
+            "warn",
+            4
+        ],
+        "camelcase": [
+            0
+        ],
+        "valid-jsdoc": 0,
+        "require-jsdoc": 0,
+        "no-irregular-whitespace": 0,
+        "no-invalid-this":0,
+        "quotes":0,
+        "padded-blocks":0,
+        "key-spacing":0,
+        "max-len":0,
+        "comma-dangle":0,
+        "no-trailing-spaces":0,
+        "camelcase":0,
+        "no-multiple-empty-lines":0,
+        "guard-for-in":0,
+        "keyword-spacing":0,
+        "no-multi-spaces":0,
+        "spaced-comment":0
     }
 }

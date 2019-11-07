@@ -10,7 +10,7 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      * componentWillMount - Handles clearing the state and resetting it when the component will be mounted.
      * @return {void}
      */
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
 
         const config = this.props.config;
         const state = {items:{}, dungeons:{}};
@@ -179,7 +179,7 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
 
             // Assemble
             return <div key={key}>
-                <img className={classInactive} onClick={onClick} onContextMenu={onRightClick} src={window.location.origin + `/resources/modules/lttp/items/${icon}`}/>
+                <img className={classInactive} onClick={onClick} onContextMenu={onRightClick} src={`resources/modules/lttp/items/${icon}`}/>
                 {elementCounter}
             </div>;
 
@@ -235,7 +235,7 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
                 const inactive = state.dungeons[key].active ? '' : 'inactive';
                 const icon = this.markerEnum[state.dungeons[key].marker] + '.png';
 
-                element = <img className={inactive} src={window.location.origin + '/resources/modules/lttp/icons/' + icon}/>
+                element = <img className={inactive} src={'resources/modules/lttp/icons/' + icon}/>
                 elementClass = 'action';
 
                 onLeftClick = () => this.onMarkerLeftClick(key, dungeon);
