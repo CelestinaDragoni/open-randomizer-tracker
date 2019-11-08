@@ -1,23 +1,42 @@
 import ConfigDefault from '../schemas/config.json';
 import clone from 'clone';
+import store from 'electron-store';
 
 export default class ConfigService {
 
     _data = {};
+    _store = null;
     static instance = null;
     static locales = ['en', 'de', 'es', 'fr', 'ja', 'ko', 'ru'];
 
-    static getInstance(updateHandler) {
+    static getInstance(updateHandler, rootController) {
         if (ConfigService.instance) {
             return ConfigService.instance;
         }
-        return ConfigService.instance = new ConfigService(updateHandler);  
+        return ConfigService.instance = new ConfigService(updateHandler, rootController);  
     }
 
     // Getters
-    constructor(updateHandler) {
-        this._data = clone(ConfigDefault);
+    constructor(updateHandler, rootController) {
+        this._store = new store();
+        if (this._store.get('config')) {
+            this._data = this._store.get('config');
+        } else {
+            this._data = clone(ConfigDefault);
+        }
         this.onUpdate = updateHandler;
+        this.rootController = rootController;
+    }
+
+    _writeConfig(callback=false) {
+
+        this.onUpdate();
+        this._store.set('config', this._data);
+
+        if (callback) {
+            callback();
+        }
+
     }
 
     get broadcast() {
@@ -64,6 +83,9 @@ export default class ConfigService {
         return this._data.gameTitleFontSize;
     }
 
+    get bounds() {
+        return this._data.bounds;
+    }
 
     // Setters
     set broadcast(v) {
@@ -107,7 +129,7 @@ export default class ConfigService {
 
     set alwaysOnTop(v) {
         this._data.alwaysOnTop = v;
-        this._writeConfig();
+        this._writeConfig(this.rootController.onAlwaysOnTop);
     }
 
     set timer(v) {
@@ -130,10 +152,9 @@ export default class ConfigService {
         this._writeConfig();
     }
 
-
-
-    _writeConfig() {
-        this.onUpdate();
+    set bounds(v) {
+        this._data.bounds = v;
+        this._writeConfig();
     }
 
 }

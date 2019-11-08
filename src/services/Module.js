@@ -11,8 +11,6 @@ export default class ModuleService {
         return ModuleService.instance = new ModuleService(); 
     }
 
-    constructor() {}
-
     options() {
 
         const options = [];

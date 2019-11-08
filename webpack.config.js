@@ -1,7 +1,7 @@
 const path  = require("path");
 const fs    = require('fs');
 const glob  = require("glob");
-const context = path.resolve(__dirname, "dist");
+const context = path.resolve(__dirname, "build");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -11,16 +11,16 @@ $entries = {'index':'./src/index.js'};
     Webpack Export
 **/
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     devtool:'source-map',
+    target: "electron-renderer",
     entry: $entries,
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "build"),
         filename: "js/[name].js"
     },
-
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
+        contentBase: path.join(__dirname, "build"),
         compress: true,
         port: 9000,
         hot: false,

@@ -99,7 +99,7 @@ export default class ConfigView extends React.Component {
                     <strong>Zoom Level ({zoomPercentage}%)</strong>
                 </Container>
                 <Container final>
-                    <Slider value={zoom} min={.5} max={2} step={.25} onChange={this.onChangeZoom}/>
+                    <Slider value={zoom} min={1} max={2} step={.25} onChange={this.onChangeZoom}/>
                 </Container>
                 <HeaderSidebarSecondary>Timer</HeaderSidebarSecondary>
                 <Container>

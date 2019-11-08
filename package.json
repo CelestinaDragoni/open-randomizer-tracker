@@ -4,7 +4,7 @@
   "license": "BSD-4-Clause",
   "author": "Anthony Mattera",
   "private": true,
-  "main": "dist/electron.js",
+  "main": "build/electron.js",
   "dependencies": {
     "clone": "^2.1.2",
     "electron-store": "^3.2.0",
@@ -30,7 +30,9 @@
     "eslint-loader": "^3.0.2",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-react": "^7.16.0",
+    "file": "^0.2.2",
     "file-loader": "^4.2.0",
+    "fs": "^0.0.1-security",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
@@ -38,51 +40,47 @@
     "react-rnd": "^10.0.0",
     "react-scripts": "2.1.5",
     "sass-loader": "^8.0.0",
+    "system": "^2.0.1",
     "wait-on": "^3.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
-    "webpack-glob-entry": "^2.1.1"
+    "webpack-glob-entry": "^2.1.1",
+    "write-file-atomic": "^3.0.1"
   },
   "scripts": {
-    "start": "webpack-dev-server",
-    "electron": "electron .",
-    "fix": "eslint  src/**/*.js --fix",
-    "build": "webpack"
+    "start": "electron ./build/electron.js & webpack --watch",
+    "build": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "lint:fix": "eslint src/**/*.js --fix",
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 1 electron version"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 electron version"
     ]
   },
   "build": {
     "appId": "open-randomizer-tracker",
-    "productName": "Open Randomizer Tracker",
+    "artifactName": "open-randomizer-tracker-${version}.${ext}",
+    "productName": "open-randomizer-tracker",
     "files": [
-      "dist/**/*"
+      "build/**/*"
     ],
     "linux": {
-      "icon": "./src/resources/icons/icon.png",
+      "icon": "./build/resources/icons/icon.png",
       "target": "appimage",
       "category": "Multimedia"
     },
     "win": {
-      "icon": "./src/resources/icons/icon.ico",
+      "icon": "./build/resources/icons/icon.ico",
       "target": "dir"
     },
     "mac": {
-      "icon": "./src/resources/icons/icon.icns",
+      "icon": "./build/resources/icons/icon.icns",
       "target": "dmg"
     }
   }

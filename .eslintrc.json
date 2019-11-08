@@ -28,7 +28,7 @@
         }
     },
     "rules": {
-        "react/no-direct-mutation-state":0,
+        //"react/no-direct-mutation-state":0,
         "react/prop-types":0,
         "indent": [
             1,
@@ -52,6 +52,8 @@
         "guard-for-in":0,
         "keyword-spacing":0,
         "no-multi-spaces":0,
-        "spaced-comment":0
+        "spaced-comment":0,
+        "no-unused-vars":1,
+        "new-cap":0
     }
 }

@@ -35,13 +35,14 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      */
     onMarkerRightClick = (key, dungeon) => {
 
-        this.state.dungeons[key].marker += 1;
+        const state = this.state;
+        state.dungeons[key].marker += 1;
 
-        if (this.state.dungeons[key].marker === this.markerEnum.length) {
-            this.state.dungeons[key].marker = 0;
+        if (state.dungeons[key].marker === this.markerEnum.length) {
+            state.dungeons[key].marker = 0;
         }
 
-        this.forceUpdate();
+        this.setState(state);
 
     }
 
@@ -53,8 +54,9 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      */
     onMarkerLeftClick = (key, dungeon) => {
 
-        this.state.dungeons[key].active = !this.state.dungeons[key].active;
-        this.forceUpdate();
+        const state = this.state;
+        state.dungeons[key].active = !state.dungeons[key].active;
+        this.setState(state);
 
     }
 
@@ -66,17 +68,19 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      */
     onItemRightClick = (key, item) => {
 
+        const state = this.state;
+
         if (item.progressive) {
 
-            let level = this.state.items[key].level;
+            let level = state.items[key].level;
             level = level+1;
 
             if (level >= item.styles.length) {
                 level = 0;
             }
 
-            this.state.items[key].level = level;
-            this.forceUpdate();
+            state.items[key].level = level;
+            this.setState(state);
 
         }
 
@@ -90,12 +94,13 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      */
     onItemLeftClick = (key, item) => {
 
-        let active = !this.state.items[key].active;
+        const state = this.state;
+        let active = !state.items[key].active;
         let counter = 0;
 
         if (item.counter) {
 
-            counter = this.state.items[key].counter;
+            counter = state.items[key].counter;
             counter = counter+1;
 
             if (counter > item.counter) {
@@ -107,9 +112,9 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
 
         }
 
-        this.state.items[key].active = active;
-        this.state.items[key].counter = counter; 
-        this.forceUpdate();
+        state.items[key].active = active;
+        state.items[key].counter = counter; 
+        this.setState(state);
     }
 
 
