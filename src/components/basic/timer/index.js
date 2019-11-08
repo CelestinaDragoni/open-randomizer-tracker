@@ -49,7 +49,7 @@ export default class Timer extends React.Component {
             this.onStartTimer();
         } else if (e.keyCode==113) {
             this.onStopTimer();
-        } else if (e.keyCode==114) {
+        } else if (e.keyCode==119) {
             this.reset();
         }
     }
