@@ -97,9 +97,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
 
         const state = this.configService.moduleState;
 
-        if (this.state.dungeons[key].keys === 0) {
-            state.dungeons[key].keys = dungeon.keys;
-        } else {
+        if (state.dungeons[key].keys !== 0) {
             state.dungeons[key].keys -= 1;
         }
 
@@ -117,9 +115,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
 
         const state = this.configService.moduleState;
 
-        if (dungeon.keys  === state.dungeons[key].keys) {
-            state.dungeons[key].keys = 0;
-        } else {
+        if (dungeon.keys !== state.dungeons[key].keys) {
             state.dungeons[key].keys += 1;
         }
 
@@ -143,7 +139,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
             const dungeon = config.dungeons[key];
 
             elements.push(<tr key={key}>
-                <td>{key}</td>
+                
                 {this._renderMarker(key, dungeon, state)}
                 {this._renderMaster(key, dungeon, state)}
                 {this._renderKeys(key, dungeon, state)}
@@ -185,8 +181,10 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
             onRightClick = () => this.onMarkerRightClick(key, dungeon);
         }
 
-        return <td className={elementClass} onClick={onLeftClick} onContextMenu={onRightClick}>{element}</td>;
-
+        return <>
+            <td className={elementClass} onClick={onLeftClick} onContextMenu={onRightClick}>{key}</td>
+            <td className={elementClass} onClick={onLeftClick} onContextMenu={onRightClick}>{element}</td>
+        </>;
     }
 
     /**
@@ -266,7 +264,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
         const {triforce, config} = this.props;
         return <div className='ort-lttp'>
             <div className='left'>
-                <ModuleLayout_LinkToThePast_ItemsComponent config={config} triforce={triforce}/>
+                <ModuleLayout_LinkToThePast_ItemsComponent config={config} triforce={triforce} keysanity/>
             </div>
             <div className='right'>
                 {this.renderDungeons()}

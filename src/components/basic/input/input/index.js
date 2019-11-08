@@ -14,7 +14,11 @@ export default class Input extends React.Component {
     }
 
     render() {
-        return <input type='text' value={this.props.value} onChange={this.onChange} className='ort-input'/>;
+        let maxLength = '128';
+        if (this.props.maxLength) {
+            maxLength = this.props.maxLength;
+        }
+        return <input maxLength={maxLength} type='text' value={this.props.value} onChange={this.onChange} className='ort-input'/>;
     }
 
 }

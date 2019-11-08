@@ -12,13 +12,8 @@ export default class ModuleView extends React.Component {
 
     render() {
 
-        const zoom = this.context.config.zoom;
-        const timer = this.context.config.timer;
-        const timerFontSize = this.context.config.timerFontSize;
-        const gameTitle = this.context.config.gameTitle;
-        const gameTitleFontSize = this.context.config.gameTitleFontSize;
+        const {zoom, timer, timerFont, timerFontSize, gameTitle, gameTitleFontSize, gameTitleFont} = this.context.config;
         const style = {'transform':`scale(${zoom})`};
-
         let moduleComponent = null;
 
         switch(this.context.config.module) {
@@ -31,12 +26,12 @@ export default class ModuleView extends React.Component {
 
         let elementGameTitle = null;
         if (gameTitle.trim() !== '') {
-            elementGameTitle = <GameTitle fontSize={gameTitleFontSize}>{gameTitle}</GameTitle>;
+            elementGameTitle = <GameTitle fontSize={gameTitleFontSize} fontFamily={gameTitleFont}>{gameTitle}</GameTitle>;
         }
 
         let elementTimer = null;
         if (timer) {
-            elementTimer = <Timer fontSize={timerFontSize}/>;
+            elementTimer = <Timer fontSize={timerFontSize} fontFamily={timerFont}/>;
         }
 
         return <div className='ort-module'>

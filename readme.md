@@ -8,7 +8,9 @@ Visit http://openrandomizertracker.com for the latest binary builds for Linux, W
 ## Current Features
 - Link to the Past Modules (Keysanity and Normal Including Triforce Trackers)
 - Timer and Title Support
+- Multi-Language Support (English and Japanese)*
 
+* Note: Japanese was translated using google, if you have better translations submit a ticket or a pull request.
 
 ## Development
 ### Knowledge Prerequisites 
@@ -23,7 +25,7 @@ To effectively work on this project you need to know the following:
 For general development you must have:
  - Node LTS Version 12 or above
  - Yarn
- - A coder such as Sublime Text or Visual Studio Code
+ - A coder such as Vim, Sublime Text, or Visual Studio Code
 
 For building binaries
  - The above dependencies installed and ...

@@ -39,6 +39,18 @@ export default class ConfigService {
 
     }
 
+    get fontOptions() {
+        return [
+            {label:'Sans-Serif', value:'sans-serif'},
+            {label:'Serif', value:'serif'},
+            {label:'Monospace', value:'monospace'},
+            {label:'Roboto', value:'roboto'},
+            {label:'Roboto Medium', value:'roboto-medium'},
+            {label:'Roboto Bold', value:'roboto-bold'},
+            {label:'Commodore 64', value:'c64'},
+        ];
+    }
+
     get broadcast() {
         return this._data.broadcast;
     }
@@ -79,6 +91,10 @@ export default class ConfigService {
         return this._data.timer;
     }
 
+    get timerFont() {
+        return this._data.timerFont;
+    }
+
     get timerFontSize() {
         return this._data.timerFontSize;
     }
@@ -87,12 +103,20 @@ export default class ConfigService {
         return this._data.gameTitle;
     }
 
+    get gameTitleFont() {
+        return this._data.gameTitleFont;
+    }
+
     get gameTitleFontSize() {
         return this._data.gameTitleFontSize;
     }
 
     get bounds() {
         return this._data.bounds;
+    }
+
+    get modalHelp() {
+        return this._data.modalHelp;
     }
 
     // Setters
@@ -155,6 +179,11 @@ export default class ConfigService {
         this._writeConfig();
     }
 
+    set timerFont(v) {
+        this._data.timerFont = v;
+        this._writeConfig();
+    }
+
     set timerFontSize(v) {
         this._data.timerFontSize = v;
         this._writeConfig();
@@ -165,6 +194,11 @@ export default class ConfigService {
         this._writeConfig();
     }
 
+    set gameTitleFont(v) {
+        this._data.gameTitleFont = v;
+        this._writeConfig();
+    }
+
     set gameTitleFontSize(v) {
         this._data.gameTitleFontSize = v;
         this._writeConfig();
@@ -172,6 +206,11 @@ export default class ConfigService {
 
     set bounds(v) {
         this._data.bounds = v;
+        this._writeConfig();
+    }
+
+    set modalHelp(v) {
+        this._data.modalHelp = v;
         this._writeConfig();
     }
 

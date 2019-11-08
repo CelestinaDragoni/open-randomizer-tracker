@@ -70,17 +70,26 @@
     "files": [
       "build/**/*"
     ],
+    "extraFiles": [
+      {
+        "from": "build/resources/icons",
+        "to": "icons",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
     "linux": {
-      "icon": "./build/resources/icons/icon.png",
-      "target": "appimage",
+      "icon": "icon.png",
+      "target": "tar.gz",
       "category": "Multimedia"
     },
     "win": {
-      "icon": "./build/resources/icons/icon.ico",
-      "target": "dir"
+      "icon": "icon.ico",
+      "target": "zip"
     },
     "mac": {
-      "icon": "./build/resources/icons/icon.icns",
+      "icon": "icon.icns",
       "target": "dmg"
     }
   }

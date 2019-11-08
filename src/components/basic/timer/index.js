@@ -84,7 +84,8 @@ export default class Timer extends React.Component {
 
     render() {
         const style = {
-            'fontSize':`${this.props.fontSize}px`
+            'fontSize':`${this.props.fontSize}px`,
+            'fontFamily':this.props.fontFamily
         };
         return <div className='ort-timer' style={style}>
             {this.state.timeFormat}

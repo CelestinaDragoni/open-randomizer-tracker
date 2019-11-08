@@ -86,7 +86,6 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
 
             if (dungeon.crystal !== false || dungeon.pendant !== false) {
                 elements.push(<tr key={key}>
-                    <td>{key}</td>
                     {this._renderMarker(key, dungeon, state)}
                 </tr>);
             }
@@ -127,8 +126,10 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
             onRightClick = () => this.onMarkerRightClick(key, dungeon);
         }
 
-        return <td className={elementClass} onClick={onLeftClick} onContextMenu={onRightClick}>{element}</td>;
-
+        return <>
+            <td className={elementClass} onClick={onLeftClick} onContextMenu={onRightClick}>{key}</td>
+            <td className={elementClass} onClick={onLeftClick} onContextMenu={onRightClick}>{element}</td>
+        </>;
     }
 
     /**

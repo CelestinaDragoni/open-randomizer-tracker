@@ -18,6 +18,9 @@
     "alwaysOnTop":false,
     "timer":false,
     "timerFontSize":32,
+    "timerFont":"sans-serif",
     "gameTitle":"",
-    "gameTitleFontSize":24
+    "gameTitleFontSize":24,
+    "gameTitleFont":"sans-serif",
+    "modalHelp":false
 }

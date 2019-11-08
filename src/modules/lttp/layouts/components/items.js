@@ -115,7 +115,12 @@ export default class ModuleLayout_LinkToThePast_ItemsComponent extends React.Com
             elements.push(element);
         }
 
-        return <div className='ort-lttp-items keysanity'>
+        let className = 'ort-lttp-items';
+        if (this.props.keysanity) {
+            className += ' keysanity';
+        }
+
+        return <div className={className}>
             {elements}
         </div>;
     }

@@ -6,6 +6,10 @@ export default class LayoutClassic extends React.PureComponent {
 
     static contextType = RootContext;
 
+    onHelp = () =>  {
+        this.context.config.modalHelp = !this.context.config.modalHelp;
+    }
+
     render() {
 
         const style = {};
@@ -23,7 +27,10 @@ export default class LayoutClassic extends React.PureComponent {
                 {this.props.children[1]}
             </div>
             <div className='ort-layout-classic-broadcast'>
-                {this.context.language._('config-mode')}
+                {_('config-mode')}
+            </div>
+            <div className='ort-help' onClick={this.onHelp}>
+                <i className='fas fa-question-circle'/>
             </div>
         </div>;
     }

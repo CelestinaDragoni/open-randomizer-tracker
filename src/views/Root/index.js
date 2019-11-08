@@ -1,5 +1,5 @@
 import React from 'react';
-import {remote} from 'electron';
+import {remote, shell} from 'electron';
 import clone from 'clone';
 
 // Services
@@ -10,6 +10,9 @@ import ModuleService from '../../services/Module';
 // Views
 import ConfigView from '../Config';
 import ModuleView from '../Module';
+
+// Modals
+import HelpModal from '../../components/compound/modals/HelpModal';
 
 // Layouts
 import LayoutClassic from '../../components/compound/layout/classic';
@@ -48,6 +51,9 @@ export default class RootViewController extends React.Component {
 
         // Set at Launch
         this.onAlwaysOnTop();
+
+        // External Link Handler
+        window._link = this.onExternalLink;
     }
 
     componentDidMount() {
@@ -76,8 +82,19 @@ export default class RootViewController extends React.Component {
         this.forceUpdate();
     }
 
+    onExternalLink(e) {
+        e.preventDefault();
+        shell.openExternal(e.target.href);
+    }
+
     onToggleBroadcast = (e) => {
         if(e.key === "Escape") {
+
+            // Close Modals on ESC
+            if (this.services.config.modalHelp) {
+                this.services.config.modalHelp = false;
+                return;
+            }
 
             this.services.config.broadcast = !this.services.config.broadcast;
 
@@ -112,13 +129,14 @@ export default class RootViewController extends React.Component {
 
     render() {
 
-        const backgroundColor = this.services.config.backgroundColor;
+        const {backgroundColor, modalHelp} = this.services.config;
 
         return <RootContext.Provider value={this.services}>
             <LayoutClassic broadcast={this.services.config.broadcast} backgroundColor={backgroundColor}>
                 <ConfigView/>
                 <ModuleView/>
             </LayoutClassic>
+            <HelpModal target='modalHelp' display={modalHelp} title={_('help-title')}/>
         </RootContext.Provider>;
         
     }
