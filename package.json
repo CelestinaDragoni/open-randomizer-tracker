@@ -72,7 +72,7 @@
     ],
     "extraFiles": [
       {
-        "from": "build/resources/icons",
+        "from": "public/resources/icons",
         "to": "icons",
         "filter": [
           "**/*"
@@ -80,16 +80,16 @@
       }
     ],
     "linux": {
-      "icon": "icon.png",
+      "icon": "build/resources/icon.png",
       "target": "tar.gz",
       "category": "Multimedia"
     },
     "win": {
-      "icon": "icon.ico",
+      "icon": "build/resources/icon.ico",
       "target": "zip"
     },
     "mac": {
-      "icon": "icon.icns",
+      "icon": "build/resources/icon.icns",
       "target": "dmg"
     }
   }
