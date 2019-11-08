@@ -1,7 +1,14 @@
 import React from "react";
+import clone from "clone";
 import "./styles.sass";
 
+import ModuleLayout_LinkToThePast_ItemsComponent from './components/items.js';
+import {RootContext} from '../../../context/RootContext';
+
 export default class ModuleLayout_LinkToThePast_Keysanity extends React.Component {
+
+    static contextType = RootContext;
+    configService = null
 
     /** Handles Marker Enumeration **/
     markerEnum = ["unknown", "crystal", "redcrystal", "courage", "power", "wisdom"];
@@ -11,6 +18,8 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      * @return {void}
      */
     UNSAFE_componentWillMount() {
+
+        this.configService = this.context.config;
 
         const config = this.props.config;
         const state = {items:{}, dungeons:{}};
@@ -23,7 +32,8 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
             state.dungeons[key] = {active:false, master:false, marker:0, keys:0};
         }
 
-        this.setState(state);
+        this.configService.moduleStateDefault = clone(state);
+        this.configService.moduleState = clone(state);
 
     }
 
@@ -35,7 +45,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onMarkerRightClick = (key, dungeon) => {
 
-        const state = this.state;
+        const state = this.configService.moduleState;
 
         state.dungeons[key].marker += 1;
 
@@ -43,7 +53,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
             state.dungeons[key].marker = 0;
         }
 
-        this.setState(state);
+        this.configService.moduleState = state;
 
     }
 
@@ -55,9 +65,9 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onMarkerLeftClick = (key, dungeon) => {
 
-        const state = this.state;
+        const state = this.configService.moduleState;
         state.dungeons[key].active = !state.dungeons[key].active;
-        this.setState(state);
+        this.configService.moduleState = state;
 
     }
 
@@ -69,11 +79,11 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onMasterLeftClick = (key, dungeon) => {
 
-        const state = this.state;
+        const state = this.configService.moduleState;
 
         state.dungeons[key].master = !state.dungeons[key].master;
 
-        this.setState(state);
+        this.configService.moduleState = state;
 
     }
 
@@ -85,7 +95,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onKeyRightClick = (key, dungeon) => {
 
-        const state = this.state;
+        const state = this.configService.moduleState;
 
         if (this.state.dungeons[key].keys === 0) {
             state.dungeons[key].keys = dungeon.keys;
@@ -93,7 +103,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
             state.dungeons[key].keys -= 1;
         }
 
-        this.setState(state);
+        this.configService.moduleState = state;
 
     }
 
@@ -105,7 +115,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     onKeyLeftClick = (key, dungeon) => {
 
-        const state = this.state;
+        const state = this.configService.moduleState;
 
         if (dungeon.keys  === state.dungeons[key].keys) {
             state.dungeons[key].keys = 0;
@@ -113,161 +123,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
             state.dungeons[key].keys += 1;
         }
 
-        this.setState(state);
-
-    }
-
-    /**
-     * Changes the style for progressive items such as tunics and swords. Handles counting down as well.
-     * @param {string} key - Item Key
-     * @param {object} item - Item Properties
-     * @return {void}
-     */
-    onItemRightClick = (key, item) => {
-
-        const state = this.state;
-
-        let counter = 0;
-        let active = state.items[key].active;
-
-        if (item.counter) {
-
-            counter = state.items[key].counter;
-            counter -= 1;
-            active = true;
-
-            if (counter < 0) {
-                counter += 1;
-            }
-            if (counter <= 0) {
-                active = false;
-            }
-
-            state.items[key].active = active;
-            state.items[key].counter = counter;
-            
-
-        } else if (item.progressive) {
-
-            let level = state.items[key].level;
-            level = level+1;
-
-            if (level >= item.styles.length) {
-                level = 0;
-            }
-
-            
-            state.items[key].level = level;
-
-        }
-
-        this.setState(state);
-
-    }
-
-    /**
-     * Changes the active state of items, counter objects such as bottles are also handled.
-     * @param {string} key - Item Key
-     * @param {object} item - Item Properties
-     * @return {void}
-     */
-    onItemLeftClick = (key, item) => {
-
-        const state = this.state;
-        let active = !state.items[key].active;
-        let counter = 0;
-
-        if (item.counter) {
-
-            counter = state.items[key].counter;
-            counter += 1;
-            active = true;
-
-            if (counter > item.counter) {
-                counter -= 1;
-            }
-
-        }
-
-        state.items[key].active = active;
-        state.items[key].counter = counter; 
-        this.setState(state);
-    }
-
-
-    /**
-     * Renders the item grid
-     * @return {ReactDOM}
-     */
-    renderItems() {
-        const state = this.state;
-        const config = this.props.config;
-        const elements = [];
-
-        for (const key in config.items) {
-            if (key === 'triforce' && !this.props.triforce) {
-                continue;
-            }
-            const item = config.items[key];
-            const element = this._renderItem(key, item, state);
-            elements.push(element);
-        }
-
-        return <div className='ort-lttp-items keysanity'>
-            {elements}
-        </div>;
-    }
-
-    /**
-     * Private function, Renders the item view and actions.
-     * @param {string} key - Item Key
-     * @param {object} item - Item properties
-     * @param {object} state - The current state of this class
-     * @return {ReactDOM}
-     */
-    _renderItem(key, item, state) {
-
-        // Elements and Classes
-        let icon = `${key}.png`;
-        let elementCounter = null;
-        let classInactive = '';
-
-        // Actions
-        let onClick = () => this.onItemLeftClick(key, item);
-        let onRightClick = null;
-
-        // State
-        const {level, counter} = state.items[key];
-
-        // If item is progressive, get the right icon per the style.
-        if (item.progressive) {
-            icon = `${key}/${item.styles[level]}.png`;
-            onRightClick = () => this.onItemRightClick(key, item);
-        }
-
-        // If item is not active, gray it out.
-        if (state.items[key].active === false && !item.required) {
-            classInactive = 'inactive';
-        }
-
-        // If item is required, cannot be grayed out (tunic only)
-        if (item.required) {
-            onClick = null;
-        }
-
-        // If item has a counter, display the count (bottles only)
-        if (item.counter) {
-            if (counter > 0) {
-                elementCounter = <span>{counter}</span>;
-            }
-            onRightClick = () => this.onItemRightClick(key, item);
-        }
-
-        // Assemble
-        return <div key={key}>
-            <img className={classInactive} onClick={onClick} onContextMenu={onRightClick} src={`resources/modules/lttp/items/${icon}`}/>
-            {elementCounter}
-        </div>;
+        this.configService.moduleState = state;
 
     }
 
@@ -277,7 +133,8 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      */
     renderDungeons() {
 
-        const state = this.state;
+        const state = this.configService.moduleState;
+
         const config = this.props.config;
         const elements = [];
 
@@ -406,9 +263,10 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
      * @return {ReactDOM}
      */
     render() {
+        const {triforce, config} = this.props;
         return <div className='ort-lttp'>
             <div className='left'>
-                {this.renderItems()}
+                <ModuleLayout_LinkToThePast_ItemsComponent config={config} triforce={triforce}/>
             </div>
             <div className='right'>
                 {this.renderDungeons()}

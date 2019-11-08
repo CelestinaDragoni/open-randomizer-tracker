@@ -1,4 +1,5 @@
 import React from 'react';
+import clone from 'clone';
 import {RootContext} from '../../context/RootContext';
 import {HeaderSidebarPrimary, HeaderSidebarSecondary} from '../../components/basic/header';
 import Container from '../../components/basic/container';
@@ -6,126 +7,101 @@ import Select from '../../components/basic/input/select';
 import Input from '../../components/basic/input/input';
 import Slider from '../../components/basic/input/slider';
 import Toggle from '../../components/basic/input/toggle';
+import Button from '../../components/basic/button';
 
 import "./index.sass";
 
 export default class ConfigView extends React.Component {
     static contextType = RootContext;
 
-    onChangeModule = (val) => {
-        this.context.config.module = val;
-    }
-
-    onChangeModuleLayout = (val) => {
-        this.context.config.moduleLayout = val;
-    }
-
-    onChangeBackgroundColor = (val) => {
-        this.context.config.backgroundColor = val;
-    }
-
-    onChangeZoom = (val) => {
-        this.context.config.zoom = val;
-    }
-
-    onChangeAlwaysOnTop = (val) => {
-        this.context.config.alwaysOnTop = val;
-    }
-
-    onChangeTimer = (val) => {
-        this.context.config.timer = val;
-    }
-
-    onChangeTimerFontSize = (val) => {
-        this.context.config.timerFontSize = val;
-    }
-
-    onChangeGameTitle = (val) => {
-        this.context.config.gameTitle = val;
-    }
-
-    onChangeGameTitleFontSize = (val) => {
-        this.context.config.gameTitleFontSize = val;
+    onChange = (key, value) => {
+        if (key === 'moduleLayout') {
+            this.context.config.moduleState = clone(this.context.config.moduleStateDefault);
+        }
+        this.context.config[key] = value;
     }
 
     render() {
 
-        const config = this.context.config;
+        const lang = this.context.language;
 
-        const moduleKey = config.module;
-        const moduleLayout = config.moduleLayout;
+        const {module, moduleLayout, backgroundColor, zoom, alwaysOnTop,
+            timer, timerFontSize, gameTitle, gameTitleFontSize, locale} = this.context.config;
+
         const moduleOptions = this.context.module.options();
-        const moduleLayoutOptions = this.context.module.layoutOptions(moduleKey);
+        const moduleLayoutOptions = this.context.module.layoutOptions(module);
 
-        const backgroundColor = config.backgroundColor;
-        const zoom = config.zoom;
+        const languageOptions = lang.options();
+
         const zoomPercentage = zoom*100;
-        const alwaysOnTop = config.alwaysOnTop;
-        const timer = config.timer;
-        const timerFontSize = config.timerFontSize;
-        const gameTitle = config.gameTitle;
-        const gameTitleFontSize = config.gameTitleFontSize;
 
         return <div className='ort-sidebar-profile'>
-            <HeaderSidebarPrimary>Configuration</HeaderSidebarPrimary>
+            <HeaderSidebarPrimary>{lang._('configuration')}</HeaderSidebarPrimary>
             <div className='ort-sidebar-profile-content'>
-                <HeaderSidebarSecondary>Module</HeaderSidebarSecondary>
+                <HeaderSidebarSecondary>{lang._('language')}</HeaderSidebarSecondary>
+                <Container final>
+                    <Select target='locale' value={locale} options={languageOptions} onChange={this.onChange}/>
+                </Container>
+                <HeaderSidebarSecondary>{lang._('module')}</HeaderSidebarSecondary>
                 <Container>
-                    <strong>Module:</strong>
+                    <strong>{lang._('module')}</strong>
                 </Container>
                 <Container>
-                    <Select value={moduleKey}  options={moduleOptions} onChange={this.onChangeModule}/>
+                    <Select target='module' value={module} options={moduleOptions} onChange={this.onChange}/>
                 </Container>
                 <Container>
-                    <div><strong>Layout:</strong></div>
+                    <div><strong>{lang._('layout')}</strong></div> 
+                </Container>
+                <Container>
+                    <Select target='moduleLayout' value={moduleLayout} options={moduleLayoutOptions} onChange={this.onChange}/>
                 </Container>
                 <Container final>
-                    <Select value={moduleLayout} options={moduleLayoutOptions} onChange={this.onChangeModuleLayout}/>
+                    <Button icon='fas fa-redo-alt fa-fw'>{lang._('reset-tracker')}</Button>
                 </Container>
-                <HeaderSidebarSecondary>Options</HeaderSidebarSecondary>
+                <HeaderSidebarSecondary>{lang._('options')}</HeaderSidebarSecondary>
                 <Container>
-                    <strong>Background Color</strong>
-                </Container>
-                <Container>
-                    <Input value={backgroundColor} onChange={this.onChangeBackgroundColor}/>
+                    <strong>{lang._('background-color')}</strong>
                 </Container>
                 <Container>
-                    <strong>Always On Top</strong>
+                    <Input target='backgroundColor' value={backgroundColor} onChange={this.onChange}/>
                 </Container>
                 <Container>
-                    <Toggle value={alwaysOnTop} onChange={this.onChangeAlwaysOnTop}/>
+                    <strong>{lang._('always-on-top')}</strong>
                 </Container>
                 <Container>
-                    <strong>Zoom Level ({zoomPercentage}%)</strong>
+                    <Toggle target='alwaysOnTop' value={alwaysOnTop} onChange={this.onChange}/>
+                </Container>
+                <Container>
+                    <strong>{lang._('zoom-level')} ({zoomPercentage}%)</strong>
                 </Container>
                 <Container final>
-                    <Slider value={zoom} min={1} max={2} step={.25} onChange={this.onChangeZoom}/>
+                    <Slider target='zoom' value={zoom} min={1} max={2} step={.25} onChange={this.onChange}/>
                 </Container>
-                <HeaderSidebarSecondary>Timer</HeaderSidebarSecondary>
+                <HeaderSidebarSecondary>{lang._('timer')}</HeaderSidebarSecondary>
                 <Container>
-                    <strong>Enable Timer</strong>
-                </Container>
-                <Container>
-                    <Toggle value={timer} onChange={this.onChangeTimer}/>
+                    <strong>{lang._('enable-timer')}</strong>
                 </Container>
                 <Container>
-                    <strong>Timer Font Size ({timerFontSize}px)</strong>
+                    <Toggle target='timer' value={timer} onChange={this.onChange}/>
+                </Container>
+                <Container>
+                    <strong>{lang._('timer-font-size')} ({timerFontSize}px)</strong>
                 </Container>
                 <Container final>
-                    <Slider value={timerFontSize} min={12} max={75} step={1} onChange={this.onChangeTimerFontSize}/>
+                    <Slider target='timerFontSize' value={timerFontSize} min={12} max={75} step={1} onChange={this.onChange}/>
                 </Container>
-                <HeaderSidebarSecondary>Current Game Title</HeaderSidebarSecondary>
+                <HeaderSidebarSecondary>{lang._('current-game-title')}</HeaderSidebarSecondary>
                 <Container>
-                    <strong>Game Title</strong>
-                </Container>
-                <Container>
-                    <Input value={gameTitle} onChange={this.onChangeGameTitle}/>
+                    <strong>{lang._('game-title')}</strong>
                 </Container>
                 <Container>
-                    <strong>Game Title Font Size ({gameTitleFontSize}px)</strong>
+                    <Input target='gameTitle' value={gameTitle} onChange={this.onChange}/>
+                </Container>
+                <Container>
+                    <strong>{lang._('game-title-font-size')} ({gameTitleFontSize}px)</strong>
                 </Container>
                 <Container final>
-                    <Slider value={gameTitleFontSize} min={12} max={75} step={1} onChange={this.onChangeGameTitleFontSize}/>
+                    <Slider target='gameTitleFontSize' value={gameTitleFontSize} min={12} max={75} step={1} onChange={this.onChange}/>
                 </Container>
             </div>
         </div>;

@@ -1,7 +1,14 @@
 import React from "react";
+import clone from "clone";
 import "./styles.sass";
 
+import ModuleLayout_LinkToThePast_ItemsComponent from './components/items.js';
+import {RootContext} from '../../../context/RootContext';
+
 export default class ModuleLayout_LinkToThePast_Standard extends React.Component {
+
+    static contextType = RootContext;
+    configService = null
 
     /** Handles Marker Enumeration **/
     markerEnum = ["unknown", "crystal", "redcrystal", "courage", "power", "wisdom"];
@@ -11,6 +18,8 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      * @return {void}
      */
     UNSAFE_componentWillMount() {
+
+        this.configService = this.context.config;
 
         const config = this.props.config;
         const state = {items:{}, dungeons:{}};
@@ -23,7 +32,8 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
             state.dungeons[key] = {active:false, marker:0};
         }
 
-        this.setState(state);
+        this.configService.moduleStateDefault = clone(state);
+        this.configService.moduleState = clone(state);
 
     }
 
@@ -35,14 +45,14 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      */
     onMarkerRightClick = (key, dungeon) => {
 
-        const state = this.state;
+        const state = this.configService.moduleState;
         state.dungeons[key].marker += 1;
 
         if (state.dungeons[key].marker === this.markerEnum.length) {
             state.dungeons[key].marker = 0;
         }
 
-        this.setState(state);
+        this.configService.moduleState = state;
 
     }
 
@@ -53,140 +63,10 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      * @return {void}
      */
     onMarkerLeftClick = (key, dungeon) => {
-
-        const state = this.state;
+        
+        const state = this.configService.moduleState;
         state.dungeons[key].active = !state.dungeons[key].active;
-        this.setState(state);
-
-    }
-
-    /**
-     * Changes the style for progressive items such as tunics and swords.
-     * @param {string} key - Item Key
-     * @param {object} item - Item Properties
-     * @return {void}
-     */
-    onItemRightClick = (key, item) => {
-
-        const state = this.state;
-
-        if (item.progressive) {
-
-            let level = state.items[key].level;
-            level = level+1;
-
-            if (level >= item.styles.length) {
-                level = 0;
-            }
-
-            state.items[key].level = level;
-            this.setState(state);
-
-        }
-
-    }
-
-    /**
-     * Changes the active state of items, counter objects such as bottles are also handled.
-     * @param {string} key - Item Key
-     * @param {object} item - Item Properties
-     * @return {void}
-     */
-    onItemLeftClick = (key, item) => {
-
-        const state = this.state;
-        let active = !state.items[key].active;
-        let counter = 0;
-
-        if (item.counter) {
-
-            counter = state.items[key].counter;
-            counter = counter+1;
-
-            if (counter > item.counter) {
-                counter = 0;
-                active = false;
-            } else {
-                active = true;
-            }
-
-        }
-
-        state.items[key].active = active;
-        state.items[key].counter = counter; 
-        this.setState(state);
-    }
-
-
-    /**
-     * Renders the item grid
-     * @return {ReactDOM}
-     */
-    renderItems() {
-        const state = this.state;
-        const config = this.props.config;
-        const elements = [];
-
-        for (const key in config.items) {
-            const item = config.items[key];
-            const element = this._renderItem(key, item, state);
-            elements.push(element);
-        }
-
-        return <div className='ort-lttp-items'>
-            {elements}
-        </div>;
-    }
-
-    /**
-     * Private function, Renders the item view and actions.
-     * @param {string} key - Item Key
-     * @param {object} item - Item properties
-     * @param {object} state - The current state of this class
-     * @return {ReactDOM}
-     */
-    _renderItem(key, item, state) {
-
-        // Elements and Classes
-        let icon = `${key}.png`;
-        let elementCounter = null;
-        let classInactive = '';
-
-        // Actions
-        let onClick = () => this.onItemLeftClick(key, item);
-        let onRightClick = null;
-
-        // State
-        const {level, counter} = state.items[key];
-
-        // If item is progressive, get the right icon per the style.
-        if (item.progressive) {
-            icon = `${key}/${item.styles[level]}.png`;
-            onRightClick = () => this.onItemRightClick(key, item);
-        }
-
-        // If item is not active, gray it out.
-        if (state.items[key].active === false && !item.required) {
-            classInactive = 'inactive';
-        }
-
-        // If item is required, cannot be grayed out (tunic only)
-        if (item.required) {
-            onClick = null;
-        }
-
-        // If item has a counter, display the count (bottles only)
-        if (item.counter) {
-            if (counter > 0) {
-                elementCounter = <span>{counter}</span>;
-            }
-        }
-
-        // Assemble
-        return <div key={key}>
-            <img className={classInactive} onClick={onClick} onContextMenu={onRightClick} src={`resources/modules/lttp/items/${icon}`}/>
-            {elementCounter}
-        </div>;
+        this.configService.moduleState = state;
 
     }
 
@@ -196,7 +76,7 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      */
     renderDungeons() {
 
-        const state = this.state;
+        const state = this.configService.moduleState;
         const config = this.props.config;
         const elements = [];
 
@@ -256,9 +136,10 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
      * @return {ReactDOM}
      */
     render() {
+        const {triforce, config} = this.props;
         return <div className='ort-lttp'>
             <div className='left'>
-                {this.renderItems()}
+                <ModuleLayout_LinkToThePast_ItemsComponent config={config} triforce={triforce}/>
             </div>
             <div className='right'>
                 {this.renderDungeons()}

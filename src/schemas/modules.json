@@ -1,11 +1,11 @@
 {
     "lttp":{
-        "label":"Link to the Past Randomizer",
+        "label":"link-to-the-past",
         "layouts":{
-            "standard":"Standard",
-            "standard-triforce":"Standard Triforce",
-            "keysanity":"Keysanity",
-            "keysanity-triforce":"Keysanity Triforce"
+            "standard":"lttp-standard",
+            "standard-triforce":"lttp-standard-triforce",
+            "keysanity":"lttp-keysanity",
+            "keysanity-triforce":"lttp-keysanity-triforce"
         }
     }
 }

@@ -5,7 +5,11 @@ export default class Input extends React.Component {
 
     onChange = (e) => {
         if (this.props.onChange) {
-            this.props.onChange(e.target.value);
+            if (this.props.target) {
+                this.props.onChange(this.props.target, e.target.value);
+            } else {
+                this.props.onChange(e.target.value);
+            }
         }
     }
 

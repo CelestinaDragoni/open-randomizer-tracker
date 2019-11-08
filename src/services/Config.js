@@ -51,6 +51,14 @@ export default class ConfigService {
         return this._data.moduleLayout;
     }
 
+    get moduleStateDefault() {
+        return this._data.moduleStateDefault;
+    }
+
+    get moduleState() {
+        return this._data.moduleState;
+    }
+
     get locale() {
         return (this._data.locale) ? this._data.locale : 'en';
     }
@@ -100,6 +108,16 @@ export default class ConfigService {
 
     set moduleLayout(v) {
         this._data.moduleLayout = v;
+        this._writeConfig();
+    }
+
+    set moduleStateDefault(v) {
+        this._data.moduleStateDefault = v;
+        this._writeConfig();
+    }
+
+    set moduleState(v) {
+        this._data.moduleState = v;
         this._writeConfig();
     }
 

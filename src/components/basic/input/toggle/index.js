@@ -5,7 +5,11 @@ export default class Toggle extends React.Component {
 
     onChange = (e) => {
         if (this.props.onChange) {
-            this.props.onChange(!this.props.value);
+            if (this.props.target) {
+                this.props.onChange(this.props.target, !this.props.value);
+            } else {
+                this.props.onChange(!this.props.value);
+            }
         }
     }
 

@@ -38,7 +38,7 @@ export default class Button extends React.Component {
     render() {
 
         // Handle Theme
-        let type = 'button-toolbar';
+        let type = 'panel';
         if (this.props.type) {
             if (this.styles[this.props.type]) {
                 type = this.props.type;
@@ -71,11 +71,11 @@ export default class Button extends React.Component {
         // Handle Icon
         let icon = null;
         if (this.props.icon) {
-            icon = <i className={`fa ${this.props.icon}`}/>;
+            icon = <i className={`${this.props.icon}`}/>;
         }
 
         return <a id={this.props.id} className={`button ${styleName}`} onClick={onClick} href={href} target={hrefTarget}>
-            {icon} {this.props.children}
+            {icon}  {this.props.children}
         </a>;
 
 

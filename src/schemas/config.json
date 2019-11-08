@@ -13,6 +13,8 @@
     "background":"#000000",
     "module":"lttp",
     "moduleLayout":"standard",
+    "moduleStateDefault":{},
+    "moduleState":{},
     "alwaysOnTop":false,
     "timer":false,
     "timerFontSize":32,

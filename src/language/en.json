@@ -1,3 +1,24 @@
 {
-    "TOOLBAR_WARNING_CONFIG_MODE":"You are currently in configuration mode. To enter broadcast mode, press the ESC key on your keyboard."
+    "config-mode":"You are currently in configuration mode. To enter broadcast mode, press the ESC to enter broadcast mode.",
+    "configuration":"Configuration",
+    "language":"Language",
+    "module":"Module",
+    "layout":"Layout",
+    "reset-tracker":"Reset Tracker",
+    "options":"Options",
+    "background-color":"Background Color",
+    "always-on-top":"Always on Top",
+    "zoom-level":"Zoom Level",
+    "timer":"Timer",
+    "enable-timer":"Enable Timer",
+    "timer-font-size":"Timer Font Size",
+    "current-game-title":"Current Game Title",
+    "game-title":"Game Title",
+    "game-title-font-size":"Game Title Font Size",
+
+    "link-to-the-past":"Link to the Past",
+    "lttp-standard":"Standard",
+    "lttp-standard-triforce":"Standard Triforce",
+    "lttp-keysanity":"Keysanity",
+    "lttp-keysanity-triforce":"Keysanity Triforce"
 }

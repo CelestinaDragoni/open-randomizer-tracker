@@ -1,7 +1,10 @@
 import React from "react";
 import "./index.sass";
 
+import {RootContext} from '../../../../context/RootContext';
 export default class LayoutClassic extends React.PureComponent {
+
+    static contextType = RootContext;
 
     render() {
 
@@ -20,7 +23,7 @@ export default class LayoutClassic extends React.PureComponent {
                 {this.props.children[1]}
             </div>
             <div className='ort-layout-classic-broadcast'>
-                You are Currently In Configuration Mode, Press ESC to Enter Broadcast Mode
+                {this.context.language._('config-mode')}
             </div>
         </div>;
     }

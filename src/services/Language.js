@@ -24,6 +24,13 @@ export default class LanguageService {
         window._ = this._.bind(this);
     }
 
+    options() {
+        return [
+            {label:'English', value:'en'},
+            {label:'日本語', value:'ja'}
+        ];
+    }
+
     _(key) {
 
         const locale = ConfigService.getInstance().locale;

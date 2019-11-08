@@ -1,1 +1,23 @@
-{}
+{
+    "config-mode":"現在、構成モードです。ブロードキャストモードに入るには、ESC を押してブロードキャストモードに入ります",
+    "configuration":"コンフィグレーション",
+    "language":"ランゲージ",
+    "module":"モジュール",
+    "layout":"レイアウト",
+    "reset-tracker":"トラッカーをリセット",
+    "options":"オプション",
+    "background-color":"背景色",
+    "always-on-top":"常にトップに",
+    "zoom-level":"ズームレベル",
+    "timer":"タイマー",
+    "enable-timer":"タイマーを有効にする",
+    "timer-font-size":"タイマーのフォントサイズ",
+    "current-game-title":"現在のゲームタイトル",
+    "game-title":"ゲームタイトル",
+    "game-title-font-size":"ゲームタイトルのフォントサイズ",
+    "link-to-the-past":"神々のトライフォース",
+    "lttp-standard":"規格",
+    "lttp-standard-triforce":"規格 トライフォース",
+    "lttp-keysanity":"キー入力",
+    "lttp-keysanity-triforce":"キー入力 トライフォース"
+}
