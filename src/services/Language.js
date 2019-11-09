@@ -1,5 +1,3 @@
-import ConfigService from './Config';
-
 import i18n_de from '../language/de.json';
 import i18n_en from '../language/en.json';
 import i18n_es from '../language/es.json';
@@ -12,15 +10,16 @@ export default class LanguageService {
 
     static instance = null;
 
-    static getInstance() {
+    static getInstance(configService) {
         if (LanguageService.instance) {
-            return ConfigService.instance;
+            return LanguageService.instance;
         }
-        return LanguageService.instance = new LanguageService();
+        return LanguageService.instance = new LanguageService(configService);
     }
 
-    constructor() {
+    constructor(configService) {
         // Global Function
+        this.configService = configService;
         window._ = this._.bind(this);
     }
 
@@ -33,7 +32,7 @@ export default class LanguageService {
 
     _(key) {
 
-        const locale = ConfigService.getInstance().locale;
+        const locale = this.configService.locale;
         const fn = `_get${locale.toUpperCase()}`;
         let string = false;
 

@@ -5,7 +5,7 @@ const context = path.resolve(__dirname, "build");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-$entries = {'index':'./src/index.js'};
+$entries = {'index':'./src/index-web.js'};
 
 /**
     Webpack Export
@@ -13,11 +13,14 @@ $entries = {'index':'./src/index.js'};
 module.exports = {
     mode: 'production',
     devtool:'source-map',
-    target: "electron-renderer",
+    target: "web",
     entry: $entries,
     output: {
         path: path.resolve(__dirname, "build"),
         filename: "js/[name].js"
+    },
+    node: {
+       fs: "empty"
     },
     devServer: {
         contentBase: path.join(__dirname, "build"),
@@ -88,9 +91,9 @@ module.exports = {
             filename: 'css/[name].css'
         }),
         new CopyWebpackPlugin([
-            {from: '**/*', to: './', context:'./src/public/electron'},
+            {from: '**/*', to: './', context:'./src/public/web'},
             {from: '**/*', to: './', context:'./src/public/shared'}
-        ], {})
+        ], {}),
     ],
     optimization: {
         splitChunks: {

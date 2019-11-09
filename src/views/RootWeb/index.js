@@ -1,9 +1,7 @@
 import React from 'react';
-import {remote, shell} from 'electron';
-import clone from 'clone';
 
 // Services
-import ConfigService from   '../../services/Config';
+import ConfigService from   '../../services/ConfigWeb';
 import LanguageService from '../../services/Language';
 import ModuleService from '../../services/Module';
 
@@ -23,7 +21,7 @@ import {RootContext} from '../../context/RootContext';
 // Global Styles
 import "../../styles/main.sass";
 
-export default class RootViewController extends React.Component {
+export default class RootViewWebController extends React.Component {
 
     // For performance on window scaling/writing.
     windowResizeTimeout = null;
@@ -46,45 +44,16 @@ export default class RootViewController extends React.Component {
             this.services.config.broadcast = false;
         }
 
-        // Reload Bounds after launch
-        remote.getCurrentWindow().setBounds(this.services.config.bounds);
-
-        // Set at Launch
-        this.onAlwaysOnTop();
-
         // External Link Handler
         window._link = this.onExternalLink;
     }
 
     componentDidMount() {
         window.addEventListener('keyup', this.onToggleBroadcast);
-        remote.getCurrentWindow().on('resize', this.onWindowChange);
-        remote.getCurrentWindow().on('move', this.onWindowChange);
-    }
-
-    onWindowChange = () => {
-        clearTimeout(this.windowResizeTimeout);
-        this.windowResizeTimeout = setTimeout(this.onWindowChangeTimeout, 100);
-    }
-
-    onWindowChangeTimeout = () => {
-        if (!this.services.config.broadcast) {
-            this.services.config.bounds = clone(remote.getCurrentWindow().getBounds());
-        }
-    }
-
-    onAlwaysOnTop = () => {
-        remote.getCurrentWindow().setAlwaysOnTop(this.services.config.alwaysOnTop);
-    }
-
-    onServiceUpdate = () => {
-        // Handles forcing the state update from a service.
-        this.forceUpdate();
     }
 
     onExternalLink(e) {
-        e.preventDefault();
-        shell.openExternal(e.target.href);
+        return true;
     }
 
     onToggleBroadcast = (e) => {
@@ -96,35 +65,14 @@ export default class RootViewController extends React.Component {
                 return;
             }
 
+            // Toggle Broadcast
             this.services.config.broadcast = !this.services.config.broadcast;
-
-            // Scale Window In Broadcast
-            if (this.services.config.broadcast) {
-
-                const bounds = clone(remote.getCurrentWindow().getBounds());
-                const moduleElement = document.querySelector('.ort-module-wrapper');
-
-                // Save Bounds for Later
-                this.services.config.bounds = clone(bounds);
-
-                // Modify Bounds for Broadcast
-                const rect = moduleElement.getBoundingClientRect();
-    
-                bounds.height = parseInt(rect.height, 10)+50;
-                bounds.width = parseInt(rect.width, 10)+50;
-
-                // Set Electron Bounds
-                remote.getCurrentWindow().setBounds(bounds);
-
-            // Restore Window Outside Broadcast
-            } else {
-
-                // Set Electron Bounds
-                const bounds = this.services.config.bounds;
-                remote.getCurrentWindow().setBounds(bounds);
-
-            }
         }
+    }
+
+    onServiceUpdate = () => {
+        // Handles forcing the state update from a service.
+        this.forceUpdate();
     }
 
     render() {
@@ -133,7 +81,7 @@ export default class RootViewController extends React.Component {
 
         return <RootContext.Provider value={this.services}>
             <LayoutClassic broadcast={this.services.config.broadcast} backgroundColor={backgroundColor}>
-                <ConfigView/>
+                <ConfigView web/>
                 <ModuleView/>
             </LayoutClassic>
             <HelpModal target='modalHelp' display={modalHelp} title={_('help-title')}/>

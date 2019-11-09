@@ -61,6 +61,8 @@ export default class ModuleLayout_LinkToThePast_ItemsComponent extends React.Com
 
         this.config.moduleState = state;
 
+        return false;
+
     }
 
     /**

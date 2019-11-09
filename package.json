@@ -1,6 +1,6 @@
 {
   "name": "open-randomizer-tracker",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "BSD-4-Clause",
   "author": "Anthony Mattera",
   "private": true,
@@ -50,7 +50,8 @@
   },
   "scripts": {
     "start": "electron ./build/electron.js & webpack --watch",
-    "build": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder"
+    "build": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder",
+    "build-web": "rm -Rf ./build && rm -Rf ./dist && webpack --config webpack-web.config.js"
   },
   "eslintConfig": {
     "extends": "react-app"

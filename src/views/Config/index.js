@@ -35,6 +35,19 @@ export default class ConfigView extends React.Component {
         const languageOptions = this.context.language.options();
         const zoomPercentage = zoom*100;
 
+
+        let elementAlwaysOnTop = null;
+        if (!this.props.web) {
+            elementAlwaysOnTop = <>
+                <Container>
+                    <strong>{_('always-on-top')}</strong>
+                </Container>
+                <Container>
+                    <Toggle target='alwaysOnTop' value={alwaysOnTop} onChange={this.onChange}/>
+                </Container>
+            </>;
+        }
+
         return <div className='ort-sidebar-profile'>
             <HeaderSidebarPrimary>{_('configuration')}</HeaderSidebarPrimary>
             <div className='ort-sidebar-profile-content'>
@@ -43,6 +56,7 @@ export default class ConfigView extends React.Component {
                 <Container final>
                     <Select target='locale' value={locale} options={languageOptions} onChange={this.onChange}/>
                 </Container>
+
 
                 <HeaderSidebarSecondary>{_('module')}</HeaderSidebarSecondary>
                 <Container>
@@ -60,7 +74,7 @@ export default class ConfigView extends React.Component {
                 <Container final>
                     <Button icon='fas fa-redo-alt fa-fw' onClick={this.onReset}>{_('reset-tracker')}</Button>
                 </Container>
-
+                
 
                 <HeaderSidebarSecondary>{_('options')}</HeaderSidebarSecondary>
                 <Container>
@@ -69,12 +83,7 @@ export default class ConfigView extends React.Component {
                 <Container>
                     <Input target='backgroundColor' value={backgroundColor} onChange={this.onChange}/>
                 </Container>
-                <Container>
-                    <strong>{_('always-on-top')}</strong>
-                </Container>
-                <Container>
-                    <Toggle target='alwaysOnTop' value={alwaysOnTop} onChange={this.onChange}/>
-                </Container>
+                {elementAlwaysOnTop}
                 <Container>
                     <strong>{_('zoom-level')} ({zoomPercentage}%)</strong>
                 </Container>
@@ -90,7 +99,6 @@ export default class ConfigView extends React.Component {
                 <Container>
                     <Toggle target='timer' value={timer} onChange={this.onChange}/>
                 </Container>
-                
                 <Container>
                     <strong>{_('timer-font')}</strong>
                 </Container>
