@@ -86,7 +86,7 @@
     },
     "win": {
       "icon": "build/resources/icons/icon.ico",
-      "target": "zip"
+      "target": "portable"
     },
     "mac": {
       "icon": "build/resources/icons/icon.icns",
