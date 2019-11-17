@@ -6,7 +6,9 @@ import {RootContext} from '../../context/RootContext';
 import {HeaderSidebarPrimary, HeaderSidebarSecondary} from '../../components/basic/header';
 import Container from '../../components/basic/container';
 import Select from '../../components/basic/input/select';
+import Toggle from '../../components/basic/input/toggle';
 import Button from '../../components/basic/button';
+import Spacer from '../../components/basic/spacer';
 
 import "./index.sass";
 
@@ -40,12 +42,25 @@ export default class ConfigView extends React.Component {
         const {
             module, 
             moduleLayout, 
-            locale, 
+            locale,
+            alwaysOnTop 
         } = this.context.config;
 
         const moduleOptions = this.context.module.options();
         const moduleLayoutOptions = this.context.module.layoutOptions(module);
         const languageOptions = this.context.language.options();
+
+        let elementAlwaysOnTop = null;
+        if (!this.props.web) {
+            elementAlwaysOnTop = <>
+                <Container>
+                    <strong>{_('always-on-top')}</strong>
+                </Container>
+                <Container>
+                    <Toggle target='alwaysOnTop' value={alwaysOnTop} onChange={this.onChange}/>
+                </Container>
+            </>;
+        }
 
         return <div className='ort-sidebar-config'>
             <HeaderSidebarPrimary>{_('configuration')}</HeaderSidebarPrimary>
@@ -55,6 +70,7 @@ export default class ConfigView extends React.Component {
                 <Container final>
                     <Select target='locale' value={locale} options={languageOptions} onChange={this.onChange}/>
                 </Container>
+                <Spacer/>
 
                 <HeaderSidebarSecondary>{_('module')}</HeaderSidebarSecondary>
                 <Container>
@@ -72,7 +88,11 @@ export default class ConfigView extends React.Component {
                 <Container final>
                     <Button icon='fas fa-redo-alt fa-fw' onClick={this.onReset}>{_('reset-tracker')}</Button>
                 </Container>
-                
+                <Spacer/>
+
+                <HeaderSidebarSecondary>{_('system')}</HeaderSidebarSecondary>
+                {elementAlwaysOnTop}
+
             </div>
         </div>;
     }

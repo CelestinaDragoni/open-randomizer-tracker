@@ -80,6 +80,7 @@ export default class Timer extends React.Component {
 
     /**
      * Handles starting and stopping of the timer.
+     * @param {Event} e
      * @return {void}
      **/
     onKeyUp = (e) => {
@@ -136,7 +137,7 @@ export default class Timer extends React.Component {
         const style = {
             'fontSize':`${this.props.fontSize}px`,
             'fontFamily':this.props.fontFamily,
-            'paddingBottom':`${this.props.padding}px`,
+            'marginBottom':`${this.props.padding}px`,
         };
         return <div className='ort-timer' style={style}>
             {this.state.timeFormat}

@@ -19,8 +19,10 @@
     "timer":false,
     "timerFontSize":32,
     "timerFont":"sans-serif",
+    "timerPadding":5,
     "gameTitle":"",
     "gameTitleFontSize":24,
     "gameTitleFont":"sans-serif",
+    "gameTitlePadding":5,
     "modalHelp":false
 }

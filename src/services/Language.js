@@ -8,8 +8,14 @@ import i18n_ru from '../language/ru.json';
 
 export default class LanguageService {
 
+    /** Singleton Instance **/
     static instance = null;
 
+    /**
+     * Singleton constructor
+     * @param {ConfigServer} configService - Config service injection.
+     * @return {LanguageService}
+     **/
     static getInstance(configService) {
         if (LanguageService.instance) {
             return LanguageService.instance;
@@ -17,12 +23,21 @@ export default class LanguageService {
         return LanguageService.instance = new LanguageService(configService);
     }
 
+    /**
+     * Constructor
+     * @param {ConfigServer} configService - Config service injection.
+     * @return {void}
+     **/
     constructor(configService) {
         // Global Function
         this.configService = configService;
         window._ = this._.bind(this);
     }
 
+    /**
+     * Get language options for menu
+     * @return {array}
+     **/
     options() {
         return [
             {label:'English', value:'en'},
@@ -30,6 +45,11 @@ export default class LanguageService {
         ];
     }
 
+    /**
+     * Bound to window, a global function for translation. Based off the same _ function from wordpress.
+     * @param {string} key
+     * @return {string}
+     **/
     _(key) {
 
         const locale = this.configService.locale;
@@ -46,6 +66,11 @@ export default class LanguageService {
         
     }
 
+    /**
+     * Get German Text.
+     * @param {string} key
+     * @return {string}
+     **/
     _getDE(key) {
         if(typeof i18n_de[key] !== 'undefined') {
             return i18n_de[key];
@@ -53,6 +78,11 @@ export default class LanguageService {
         return false;
     }
 
+    /**
+     * Get English Text.
+     * @param {string} key
+     * @return {string}
+     **/
     _getEN(key) {
         if(typeof i18n_en[key] !== 'undefined') {
             return i18n_en[key];
@@ -60,6 +90,11 @@ export default class LanguageService {
         return false;
     }
 
+    /**
+     * Get Spanish Text.
+     * @param {string} key
+     * @return {string}
+     **/
     _getES(key) {
         if(typeof i18n_es[key] !== 'undefined') {
             return i18n_es[key];
@@ -67,6 +102,11 @@ export default class LanguageService {
         return false;
     }
 
+    /**
+     * Get French Text.
+     * @param {string} key
+     * @return {string}
+     **/
     _getFR(key) {
         if(typeof i18n_fr[key] !== 'undefined') {
             return i18n_fr[key];
@@ -74,6 +114,11 @@ export default class LanguageService {
         return false;
     }
 
+    /**
+     * Get Japanese Text.
+     * @param {string} key
+     * @return {string}
+     **/
     _getJA(key) {
         if(typeof i18n_ja[key] !== 'undefined') {
             return i18n_ja[key];
@@ -81,6 +126,11 @@ export default class LanguageService {
         return false;
     }
 
+    /**
+     * Get Korean Text.
+     * @param {string} key
+     * @return {string}
+     **/
     _getKO(key) {
         if(typeof i18n_ko[key] !== 'undefined') {
             return i18n_ko[key];
@@ -88,6 +138,11 @@ export default class LanguageService {
         return false;
     }
 
+    /**
+     * Get Russian Text.
+     * @param {string} key
+     * @return {string}
+     **/
     _getRU(key) {
         if(typeof i18n_ru[key] !== 'undefined') {
             return i18n_ru[key];

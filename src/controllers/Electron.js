@@ -18,7 +18,7 @@ export default class ElectronController {
 
     /**
      * Starts binding actions for electron.
-     * @param {RootViewController} 
+     * @param {RootViewController} controller
      * @return {void}
      **/
     init(controller) {
@@ -42,7 +42,7 @@ export default class ElectronController {
 
     /**
      * Saves the configuration to the store.
-     * @param {object} Configuration dictionary
+     * @param {object} config - Configuration dictionary
      * @return {void}
      **/
     setConfig(config) {
@@ -86,6 +86,7 @@ export default class ElectronController {
 
     /**
      * Used to handle external URLs in electron.
+     * @param {Event} e
      * @return {void}
      **/
     onExternalLink(e) {
@@ -95,10 +96,11 @@ export default class ElectronController {
 
     /**
      * Handles global toggling of the broadcast keys, but it also closes modals, should prob. be renamed.
-     * @param {Event}
+     * @param {Event} e
      * @return {void}
      **/
     onToggleBroadcast = (e) => {
+        console.log('here', e.key);
         if(e.key === "Escape") {
 
             // Close Modals on ESC

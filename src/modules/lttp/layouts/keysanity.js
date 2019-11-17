@@ -170,7 +170,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
     /**
      * Private function, Renders the dungeon markers and binds actions.
      * @param {string} key - Dungeon Key
-     * @param {object} item - Dungeon properties
+     * @param {object} dungeon - Dungeon properties
      * @param {object} state - The current state of this class
      * @return {ReactDOM}
      */
@@ -202,7 +202,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
     /**
      * Private function, Renders the dungeon master keys and binds actions.
      * @param {string} key - Dungeon Key
-     * @param {object} item - Dungeon properties
+     * @param {object} dungeon - Dungeon properties
      * @param {object} state - The current state of this class
      * @return {ReactDOM}
      */
@@ -228,7 +228,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
     /**
      * Private function, Renders the dungeon key counters and binds actions.
      * @param {string} key - Dungeon Key
-     * @param {object} item - Dungeon properties
+     * @param {object} dungeon - Dungeon properties
      * @param {object} state - The current state of this class
      * @return {ReactDOM}
      */

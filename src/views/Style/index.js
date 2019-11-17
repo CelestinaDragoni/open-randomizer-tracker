@@ -5,8 +5,10 @@ import clone from 'clone';
 import {RootContext} from '../../context/RootContext';
 import {HeaderSidebarPrimary, HeaderSidebarSecondary} from '../../components/basic/header';
 import Container from '../../components/basic/container';
+import Spacer from '../../components/basic/spacer';
 import Select from '../../components/basic/input/select';
 import Input from '../../components/basic/input/input';
+import TextArea from '../../components/basic/input/textarea';
 import Slider from '../../components/basic/input/slider';
 import Toggle from '../../components/basic/input/toggle';
 
@@ -33,34 +35,89 @@ export default class StyleView extends React.Component {
         this.context.config[key] = value;
     }
 
+
+    renderTimerControls() {
+
+        const {
+            timer, 
+            timerFont, 
+            timerFontSize,
+            timerPadding,
+            fontOptions
+        } = this.context.config;
+
+        if (!timer) {
+            return null;
+        }
+
+        return <>
+            <Container>
+                <strong>{_('timer-font')}</strong>
+            </Container>
+            <Container>
+                <Select target='timerFont' value={timerFont} options={fontOptions} onChange={this.onChange}/>
+            </Container>
+            <Container>
+                <strong>{_('timer-font-size')} ({timerFontSize}px)</strong>
+            </Container>
+            <Container>
+                <Slider target='timerFontSize' value={timerFontSize} min={12} max={100} step={1} onChange={this.onChange}/>
+            </Container>
+            <Container>
+                <strong>{_('timer-padding')} ({timerPadding}px)</strong>
+            </Container>
+            <Container>
+                <Slider target='timerPadding' value={timerPadding} min={0} max={100} step={1} onChange={this.onChange}/>
+            </Container>
+        </>;
+    }
+
+    renderGameTitleControls() {
+
+        const {
+            gameTitle, 
+            gameTitleFont, 
+            gameTitleFontSize,
+            gameTitlePadding,
+            fontOptions
+        } = this.context.config;
+
+        if (gameTitle.trim() === '') {
+            return null;
+        }
+
+        return <>
+            <Container>
+                <strong>{_('game-title-font')}</strong>
+            </Container>
+            <Container>
+                <Select target='gameTitleFont' value={gameTitleFont} options={fontOptions} onChange={this.onChange}/>
+            </Container>
+            <Container>
+                <strong>{_('game-title-font-size')} ({gameTitleFontSize}px)</strong>
+            </Container>
+            <Container>
+                <Slider target='gameTitleFontSize' value={gameTitleFontSize} min={12} max={100} step={1} onChange={this.onChange}/>
+            </Container>
+            <Container>
+                <strong>{_('game-title-padding')} ({gameTitlePadding}px)</strong>
+            </Container>
+            <Container>
+                <Slider target='gameTitlePadding' value={gameTitlePadding} min={0} max={100} step={1} onChange={this.onChange}/>
+            </Container>
+        </>;
+    }
+
     render() {
 
         const {
             backgroundColor, 
             zoom, 
-            alwaysOnTop,
             timer, 
-            timerFont, 
-            timerFontSize, 
             gameTitle, 
-            gameTitleFont, 
-            gameTitleFontSize, 
-            fontOptions
         } = this.context.config;
 
         const zoomPercentage = zoom*100;
-
-        let elementAlwaysOnTop = null;
-        if (!this.props.web) {
-            elementAlwaysOnTop = <>
-                <Container>
-                    <strong>{_('always-on-top')}</strong>
-                </Container>
-                <Container>
-                    <Toggle target='alwaysOnTop' value={alwaysOnTop} onChange={this.onChange}/>
-                </Container>
-            </>;
-        }
 
         return <div className='ort-sidebar-config'>
             <HeaderSidebarPrimary>{_('styles')}</HeaderSidebarPrimary>
@@ -73,14 +130,13 @@ export default class StyleView extends React.Component {
                 <Container>
                     <Input target='backgroundColor' value={backgroundColor} onChange={this.onChange}/>
                 </Container>
-                {elementAlwaysOnTop}
                 <Container>
                     <strong>{_('zoom-level')} ({zoomPercentage}%)</strong>
                 </Container>
-                <Container final>
+                <Container>
                     <Slider target='zoom' value={zoom} min={1} max={2} step={.25} onChange={this.onChange}/>
                 </Container>
-
+                <Spacer/>
 
                 <HeaderSidebarSecondary>{_('timer')}</HeaderSidebarSecondary>
                 <Container>
@@ -89,39 +145,19 @@ export default class StyleView extends React.Component {
                 <Container>
                     <Toggle target='timer' value={timer} onChange={this.onChange}/>
                 </Container>
-                <Container>
-                    <strong>{_('timer-font')}</strong>
-                </Container>
-                <Container>
-                    <Select target='timerFont' value={timerFont} options={fontOptions} onChange={this.onChange}/>
-                </Container>
-                <Container>
-                    <strong>{_('timer-font-size')} ({timerFontSize}px)</strong>
-                </Container>
-                <Container final>
-                    <Slider target='timerFontSize' value={timerFontSize} min={12} max={100} step={1} onChange={this.onChange}/>
-                </Container>
-
+                {this.renderTimerControls()}
+                <Spacer/>
 
                 <HeaderSidebarSecondary>{_('current-game-title')}</HeaderSidebarSecondary>
                 <Container>
                     <strong>{_('game-title')}</strong>
                 </Container>
                 <Container>
-                    <Input target='gameTitle' value={gameTitle} onChange={this.onChange}/>
+                    <TextArea target='gameTitle' value={gameTitle} onChange={this.onChange} placeholder={_('game-title-placeholder')}/>
                 </Container>
-                <Container>
-                    <strong>{_('game-title-font')}</strong>
-                </Container>
-                <Container>
-                    <Select target='gameTitleFont' value={gameTitleFont} options={fontOptions} onChange={this.onChange}/>
-                </Container>
-                <Container>
-                    <strong>{_('game-title-font-size')} ({gameTitleFontSize}px)</strong>
-                </Container>
-                <Container final>
-                    <Slider target='gameTitleFontSize' value={gameTitleFontSize} min={12} max={100} step={1} onChange={this.onChange}/>
-                </Container>
+                {this.renderGameTitleControls()}
+                <Spacer/>
+                
             </div>
         </div>;
     }

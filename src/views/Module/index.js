@@ -12,7 +12,7 @@ export default class ModuleView extends React.Component {
 
     render() {
 
-        const {zoom, timer, timerFont, timerFontSize, gameTitle, gameTitleFontSize, gameTitleFont} = this.context.config;
+        const {zoom, timer, timerFont, timerFontSize, timerPadding, gameTitle, gameTitleFontSize, gameTitleFont, gameTitlePadding} = this.context.config;
         const style = {'transform':`scale(${zoom})`};
         let moduleComponent = null;
 
@@ -24,14 +24,14 @@ export default class ModuleView extends React.Component {
             moduleComponent = <div>Invalid Module</div>;
         }
 
-        let elementGameTitle = null;
-        if (gameTitle.trim() !== '') {
-            elementGameTitle = <GameTitle fontSize={gameTitleFontSize} fontFamily={gameTitleFont}>{gameTitle}</GameTitle>;
-        }
-
         let elementTimer = null;
         if (timer) {
-            elementTimer = <Timer fontSize={timerFontSize} fontFamily={timerFont}/>;
+            elementTimer = <Timer fontSize={timerFontSize} fontFamily={timerFont} padding={timerPadding}/>;
+        }
+
+        let elementGameTitle = null;
+        if (gameTitle.trim() !== '') {
+            elementGameTitle = <GameTitle fontSize={gameTitleFontSize} fontFamily={gameTitleFont} padding={gameTitlePadding}>{gameTitle}</GameTitle>;
         }
 
         return <div className='ort-module'>

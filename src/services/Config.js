@@ -8,10 +8,19 @@ export default class ConfigService {
 
     /** Data storage array **/
     _data = {};
-    _store = null;
+
+    /** Singleton Instance **/
     static instance = null;
+
+    /** Allowed Locales **/
     static locales = ['en', 'de', 'es', 'fr', 'ja', 'ko', 'ru'];
 
+    /**
+     * Singleton constructor
+     * @param {Function} updateHandler - Update handler, in views/Root
+     * @param {Controller} controller - Either an instance of controllers/Electron or controllers/Web depending on webpack.
+     * @return {ConfigService}
+     **/
     static getInstance(updateHandler, controller) {
         if (ConfigService.instance) {
             return ConfigService.instance;
@@ -19,7 +28,11 @@ export default class ConfigService {
         return ConfigService.instance = new ConfigService(updateHandler, controller);  
     }
 
-    // Getters
+    /**
+     * Constructor
+     * @param {Function} updateHandler - Update handler, in views/Root
+     * @param {Controller} controller - Either an instance of controllers/Electron or controllers/Web depending on webpack.
+     **/
     constructor(updateHandler, controller) {
         
         this.onUpdate   = updateHandler;
@@ -33,6 +46,11 @@ export default class ConfigService {
         
     }
 
+    /**
+     * Writes the config, the write for the static storage is in the controller methods based on platform.
+     * @param {Function} callback - Callback function to controller.
+     * @return {void}
+     **/
     _writeConfig(callback=false) {
 
         this.onUpdate();
@@ -46,6 +64,17 @@ export default class ConfigService {
 
     }
 
+
+
+
+    /////////////////////////////////////////////
+    ////////// Getters
+    /////////////////////////////////////////////
+
+    /**
+     * GETTER: Font options, may be better suited to a JSON file in the future.
+     * @return {array}
+     **/
     get fontOptions() {
         return [
             {label:'Sans-Serif', value:'sans-serif'},
@@ -60,100 +89,220 @@ export default class ConfigService {
         ];
     }
 
+    /**
+     * GETTER: Broadcast Mode
+     * @return {bool} v
+     **/
     get broadcast() {
         return this._data.broadcast;
     }
 
+    /**
+     * GETTER: Current Module
+     * @return {string} v
+     **/
     get module() {
         return this._data.module;
     }
 
+    /**
+     * GETTER: Module Layout
+     * @return {string} v
+     **/
     get moduleLayout() {
         return this._data.moduleLayout;
     }
 
+    /**
+     * GETTER: Module default state, handled at the module level. Used on reset.
+     * @return {object} v
+     **/
     get moduleStateDefault() {
         return this._data.moduleStateDefault;
     }
 
+    /**
+     * GETTER: Current module state, handled at the module level.
+     * @return {object} v
+     **/
     get moduleState() {
         return this._data.moduleState;
     }
 
+    /**
+     * GETTER: Current two-character language key.
+     * @return {string} v
+     **/
     get locale() {
         return (this._data.locale) ? this._data.locale : 'en';
     }
 
+    /**
+     * GETTER: Background color.
+     * @return {string} v
+     **/
     get backgroundColor() {
         return this._data.backgroundColor;
     }
 
+    /**
+     * GETTER: Zoom level.
+     * @return {number} v
+     **/
     get zoom() {
         return this._data.zoom;
     }
 
+    /**
+     * GETTER: Always on top (Electron Only)
+     * @return {bool} v
+     **/
     get alwaysOnTop() {
         return this._data.alwaysOnTop;
     }
 
+    /**
+     * GETTER: Timer enabled.
+     * @return {bool} v
+     **/
     get timer() {
         return this._data.timer;
     }
 
+    /**
+     * GETTER: Timer font
+     * @return {string} v
+     **/
     get timerFont() {
         return this._data.timerFont;
     }
 
+    /**
+     * GETTER: Timer font size. (pixels)
+     * @return {integer} v
+     **/
     get timerFontSize() {
         return this._data.timerFontSize;
     }
 
+    /**
+     * GETTER: Timer padding. (pixels)
+     * @return {integer} v
+     **/
+    get timerPadding() {
+        return this._data.timerPadding ? this._data.timerPadding : 10;
+    }
+
+    /**
+     * GETTER: Game title, if empty the game title isn't shown.
+     * @return {string} v
+     **/
     get gameTitle() {
         return this._data.gameTitle;
     }
 
+    /**
+     * GETTER: Game title font. 
+     * @return {string} v
+     **/
     get gameTitleFont() {
         return this._data.gameTitleFont;
     }
 
+    /**
+     * GETTER: Game title font size. (pixels)
+     * @return {integer} v
+     **/
     get gameTitleFontSize() {
         return this._data.gameTitleFontSize;
     }
 
+    /**
+     * GETTER: Game title padding. (pixels)
+     * @return {integer} v
+     **/
+    get gameTitlePadding() {
+        return this._data.gameTitlePadding ? this._data.gameTitlePadding : 10;
+    }
+
+    /**
+     * GETTER: Window size via an electron bounds (Electron Only)
+     * @return {object} v
+     **/
     get bounds() {
         return this._data.bounds;
     }
 
+
+    /**
+     * GETTER: Help window dialog display state.
+     * @return {bool} v
+     **/
     get modalHelp() {
         return this._data.modalHelp;
     }
 
-    // Setters
+
+
+    /////////////////////////////////////////////
+    ////////// Setters
+    /////////////////////////////////////////////
+
+    /**
+     * SETTER: Sets the broadcast mode state.
+     * @param {bool} v
+     * @return {void}
+     **/
     set broadcast(v) {
         this._data.broadcast = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Sets the module.
+     * @param {string} v
+     * @return {void}
+     **/
     set module(v) {
         this._data.module = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Sets the module layout.
+     * @param {string} v
+     * @return {void}
+     **/
     set moduleLayout(v) {
         this._data.moduleLayout = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Sets the module state default, usually when a new module is mounted.
+     * @param {object} v
+     * @return {void}
+     **/
     set moduleStateDefault(v) {
         this._data.moduleStateDefault = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Sets the module state, usually when a tracker state has changed.
+     * @param {object} v
+     * @return {void}
+     **/
     set moduleState(v) {
         this._data.moduleState = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Sets the two-character language key.
+     * @param {string} v
+     * @return {void}
+     **/
     set locale(v) {
         if (!ConfigService.locales.includes(v)) {
             v = 'en';
@@ -162,6 +311,11 @@ export default class ConfigService {
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Background color, trims it accordingly.
+     * @param {string} v
+     * @return {void}
+     **/
     set backgroundColor(v) {
         v = v.trim();
 
@@ -173,11 +327,21 @@ export default class ConfigService {
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Zoom level.
+     * @param {integer} v
+     * @return {void}
+     **/
     set zoom(v) {
         this._data.zoom = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Sets always on top state, triggers controller (Electron Only)
+     * @param {bool} v
+     * @return {void}
+     **/
     set alwaysOnTop(v) {
         this._data.alwaysOnTop = v;
         if (this.controller.onAlwaysOnTop) {
@@ -187,41 +351,101 @@ export default class ConfigService {
         }
     }
 
+    /**
+     * SETTER: Sets timer enabled/disabled state.
+     * @param {bool} v
+     * @return {void}
+     **/
     set timer(v) {
         this._data.timer = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Timer font family.
+     * @param {string} v
+     * @return {void}
+     **/
     set timerFont(v) {
         this._data.timerFont = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Timer font size. (Pixels)
+     * @param {integer} v
+     * @return {void}
+     **/
     set timerFontSize(v) {
         this._data.timerFontSize = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Timer font padding. (Pixels)
+     * @param {integer} v
+     * @return {void}
+     **/
+    set timerPadding(v) {
+        this._data.timerPadding = v;
+        this._writeConfig();
+    }
+
+    /**
+     * SETTER: Game title
+     * @param {string} v
+     * @return {void}
+     **/
     set gameTitle(v) {
         this._data.gameTitle = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Game title font.
+     * @param {string} v
+     * @return {void}
+     **/
     set gameTitleFont(v) {
         this._data.gameTitleFont = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Game title font size. (Pixels)
+     * @param {integer} v
+     * @return {void}
+     **/
     set gameTitleFontSize(v) {
         this._data.gameTitleFontSize = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Game title font padding. (Pixels)
+     * @param {integer} v
+     * @return {void}
+     **/
+    set gameTitlePadding(v) {
+        this._data.gameTitlePadding = v;
+        this._writeConfig();
+    }
+
+    /**
+     * SETTER: Window bounds (Electron Only)
+     * @param {object} v
+     * @return {void}
+     **/
     set bounds(v) {
         this._data.bounds = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Help Modal display/hide
+     * @param {bool} v
+     * @return {void}
+     **/
     set modalHelp(v) {
         this._data.modalHelp = v;
         this._writeConfig();

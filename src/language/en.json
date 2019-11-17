@@ -6,6 +6,7 @@
     "layout":"Layout",
     "reset-tracker":"Reset Tracker",
     "options":"Options",
+    "system":"System Settings",
 
     "styles":"Style Configuration",
     "background-color":"Background Color",
@@ -15,11 +16,14 @@
     "enable-timer":"Enable",
     "timer-font":"Font Family",
     "timer-font-size":"Font Size",
+    "timer-padding":"Padding",
 
     "current-game-title":"Game Title",
     "game-title":"Title",
+    "game-title-placeholder":"Enter text to configure your game title.",
     "game-title-font":"Font Family",
     "game-title-font-size":"Font Size",
+    "game-title-padding":"Padding",
 
     "link-to-the-past":"Link to the Past",
     "lttp-standard":"Standard",
