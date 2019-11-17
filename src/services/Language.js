@@ -41,7 +41,12 @@ export default class LanguageService {
     options() {
         return [
             {label:'English', value:'en'},
-            {label:'日本語', value:'ja'}
+            {label:'Español', value:'es'},
+            {label:'Français', value:'fr'},
+            {label:'Deutsch', value:'de'},
+            {label:'日本語', value:'ja'},
+            {label:'한국어', value:'ko'},
+            {label:'русский', value:'ru'}
         ];
     }
 

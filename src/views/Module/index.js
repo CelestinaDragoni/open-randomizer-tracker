@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {RootContext} from '../../context/RootContext';
 
 import Timer from '../../components/basic/timer';
@@ -8,6 +9,17 @@ import LinkToThePastModule from '../../modules/lttp/controller';
 import "./index.sass";
 
 export default class ModuleView extends React.Component {
+
+    /** React PropTypes **/
+    static propTypes = {
+        web:PropTypes.bool
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        web:false,
+    };
+
     static contextType = RootContext;
 
     render() {
