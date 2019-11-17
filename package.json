@@ -53,10 +53,11 @@
   "scripts": {
     "translate": "node translate.js",
     "translate-clean": "node translate.js --clean",
-    "start": "electron ./build/electron.js & webpack --watch",
+    "start": "webpack && electron ./build/electron.js & webpack --watch",
+    "start-web": "webpack-dev-server --config webpack-web.config.js",
     "build": "webpack",
-    "bundle": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder",
-    "bundle-web": "rm -Rf ./build && rm -Rf ./dist && webpack --config webpack-web.config.js"
+    "build-web": "webpack --config webpack-web.config.js",
+    "bundle": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder"
   },
   "eslintConfig": {
     "extends": "react-app"
