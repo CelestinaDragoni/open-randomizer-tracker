@@ -62,7 +62,7 @@ async function doTranslate() {
                 console.log(`[?]        => Translation for [${key}] Already Exists`);
             }
         }
-        fs.writeFileSync(`src/language/${code}.json`, JSON.stringify(data, null, 4));
+        fs.writeFileSync(`src/language/${code}.json`, JSON.stringify(data, null, 4)+"\n");
     }
 
     console.log(`[*]    Translations Complete`);
