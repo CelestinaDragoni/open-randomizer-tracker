@@ -1,8 +1,21 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import {RootContext} from '../../../../context/RootContext';
 
 export default class ModuleLayout_LinkToThePast_ItemsComponent extends React.Component {
+
+    /** React PropTypes **/
+    static propTypes = {
+        config:PropTypes.object.isRequired,
+        triforce:PropTypes.bool,
+        keysanity:PropTypes.bool
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        triforce:false,
+        keysanity:false
+    };
 
     static contextType = RootContext;
     config = null;

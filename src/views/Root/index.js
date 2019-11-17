@@ -10,6 +10,7 @@ import ModuleService from '../../services/Module';
 // Views
 import ConfigView from '../Config';
 import ModuleView from '../Module';
+import StyleView from '../Style';
 
 // Modals
 import HelpModal from '../../components/compound/modals/HelpModal';
@@ -135,6 +136,7 @@ export default class RootViewController extends React.Component {
             <LayoutClassic broadcast={this.services.config.broadcast} backgroundColor={backgroundColor}>
                 <ConfigView/>
                 <ModuleView/>
+                <StyleView/>
             </LayoutClassic>
             <HelpModal target='modalHelp' display={modalHelp} title={_('help-title')}/>
         </RootContext.Provider>;

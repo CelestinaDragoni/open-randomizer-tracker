@@ -1,7 +1,24 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./index.sass";
 
 export default class Input extends React.Component {
+
+    /** React PropTypes **/
+    static propTypes = {
+        onChange:PropTypes.function,
+        target:PropTypes.string,
+        value:PropTypes.mixed,
+        maxLength:PropTypes.string
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        onChange:null,
+        target:'',
+        value:'',
+        maxLength:'128'
+    };
 
     onChange = (e) => {
         if (this.props.onChange) {

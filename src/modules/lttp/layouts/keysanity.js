@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import clone from "clone";
 import "./styles.sass";
 
@@ -7,8 +8,19 @@ import {RootContext} from '../../../context/RootContext';
 
 export default class ModuleLayout_LinkToThePast_Keysanity extends React.Component {
 
+    /** React PropTypes **/
+    static propTypes = {
+        config:PropTypes.object.isRequired,
+        triforce:PropTypes.bool,
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        triforce:false
+    };
+
     static contextType = RootContext;
-    configService = null
+    configService = null;
 
     /** Handles Marker Enumeration **/
     markerEnum = ["unknown", "crystal", "redcrystal", "courage", "power", "wisdom"];

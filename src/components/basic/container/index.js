@@ -1,7 +1,20 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./index.sass";
 
 export default class Container extends React.PureComponent {
+
+    /** React PropTypes **/
+    static propTypes = {
+        final:PropTypes.bool,
+        children:PropTypes.element
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        final:false,
+        children:null
+    };
 
     render() {
 

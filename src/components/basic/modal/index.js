@@ -1,9 +1,38 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./index.sass";
 
 import {RootContext} from '../../../context/RootContext';
 
 export default class Modal extends React.Component {
+
+    /** React PropTypes **/
+    static propTypes = {
+        onClose:PropTypes.function,
+        target:PropTypes.string,
+        title:PropTypes.string,
+        icon:PropTypes.string,
+        closable:PropTypes.bool,
+        actions:PropTypes.element,
+        children:PropTypes.element,
+        height:PropTypes.string,
+        width:PropTypes.string,
+        display:PropTypes.bool,
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        onClose:null,
+        target:'',
+        title:'',
+        icon:null,
+        closable:false,
+        actions:null,
+        children:null,
+        height:null,
+        width:null,
+        display:false
+    };
 
     static contextType = RootContext;
 

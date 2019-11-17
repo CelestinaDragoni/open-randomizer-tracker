@@ -1,7 +1,28 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./index.sass";
 
 export default class Slider extends React.Component {
+
+    /** React PropTypes **/
+    static propTypes = {
+        onChange:PropTypes.function,
+        target:PropTypes.string,
+        value:PropTypes.mixed,
+        min:PropTypes.number,
+        max:PropTypes.number,
+        step:PropTypes.number
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        onChange:null,
+        target:'',
+        value:'',
+        min:0,
+        max:0,
+        step:0
+    };
 
     onChange = (e) => {
         if (this.props.onChange) {

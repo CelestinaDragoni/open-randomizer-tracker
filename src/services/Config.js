@@ -48,6 +48,8 @@ export default class ConfigService {
             {label:'Roboto Medium', value:'roboto-medium'},
             {label:'Roboto Bold', value:'roboto-bold'},
             {label:'Commodore 64', value:'c64'},
+            {label:'Vibes', value:'vibes'},
+            {label:'Nokia', value:'nokia'},
         ];
     }
 

@@ -1,28 +1,62 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./index.sass";
 
 export default class Timer extends React.Component {
 
-    onChange = (e) => {
-        if (this.props.onChange) {
-            this.props.onChange(e.target.value);
-        }
-    }
+    /** React PropTypes **/
+    static propTypes = {
+        fontSize:PropTypes.integer,
+        fontFamily:PropTypes.string,
+        padding:PropTypes.integer
+    };
 
-    timeStart = null;
-    interval = null;
-    time = 0;
+    /** React PropType Defaults **/
+    static defaultProps = {
+        fontSize:14,
+        fontFamily:"Sans-Serif",
+        padding:5
+    };
 
+    /** React state **/
     state = {
         timeFormat: '00:00:00.00'
     };
 
+    /** Time in ms, when the timer started **/
+    timeStart = null;
+
+    /** When timer is paused, the offset to start counting **/
+    timeDelta = 0;
+
+    /** Javascript interval for onTimerInverval function **/
+    interval = null;
+
+    /**
+     * Adds the event listern when mounted.
+     * @return {void}
+     **/
+    UNSAFE_componentWillMount() {
+        window.addEventListener('keyup', this.onKeyUp);
+    }
+
+    /**
+     * Handles removing the event listerner when unmounted.
+     * @return {void}
+     **/
+    componentWillUnmount() {
+        window.removeEventListener('keyup', this.onKeyUp);
+        this.reset();
+    }
+
+    /**
+     * The interval for the timer, happens every 1ms, fast enough and not a CPU hog.
+     * @return {void}
+     **/
     onTimerInterval = () => {
 
-        this.time+=1000;
-
         // Don't like this, should be able to use % operator for this.
-        let ms = Date.now() - this.timeStart;
+        let ms = Date.now() - this.timeStart + this.timeDelta;
         let h = Math.floor(ms/3600000);
         ms -= h*3600000;
         let m = Math.floor(ms/60000);
@@ -44,6 +78,10 @@ export default class Timer extends React.Component {
 
     }
 
+    /**
+     * Handles starting and stopping of the timer.
+     * @return {void}
+     **/
     onKeyUp = (e) => {
         if (e.keyCode==112) {
             this.onStartTimer();
@@ -54,6 +92,10 @@ export default class Timer extends React.Component {
         }
     }
 
+    /**
+     * Resets the timer and sets the state.
+     * @return {void}
+     **/
     reset() {
         this.onStopTimer();
         this.setState({
@@ -61,31 +103,40 @@ export default class Timer extends React.Component {
         });
     }
 
+    /**
+     * Stops the timer for good, resets the time delta to 0.
+     * @return {void}
+     **/
     onStopTimer = () => {
         clearInterval(this.interval);
         this.interval = null;
+        this.timeDelta = 0;
     }
 
+    /**
+     * Starts the timer, if the timer is started pause it.
+     * @return {void}
+     **/
     onStartTimer = () => {
         if (!this.interval) {
             this.timeStart = Date.now();
             this.interval = setInterval(this.onTimerInterval, 1);
+        } else {
+            clearInterval(this.interval);
+            this.interval = null;
+            this.timeDelta += Date.now() - this.timeStart;
         }
     }
 
-    UNSAFE_componentWillMount() {
-        window.addEventListener('keyup', this.onKeyUp);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('keyup', this.onKeyUp);
-        this.reset();
-    }
-
+    /**
+     * Renders the timer
+     * @return {ReactDOM}
+     **/
     render() {
         const style = {
             'fontSize':`${this.props.fontSize}px`,
-            'fontFamily':this.props.fontFamily
+            'fontFamily':this.props.fontFamily,
+            'paddingBottom':`${this.props.padding}px`,
         };
         return <div className='ort-timer' style={style}>
             {this.state.timeFormat}

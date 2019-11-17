@@ -1,7 +1,22 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Modal from '../../../basic/modal';
 
 export default class ModalHelp extends React.Component {
+
+    /** React PropTypes **/
+    static propTypes = {
+        title:PropTypes.string,
+        target:PropTypes.string,
+        display:PropTypes.display,
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        title:'',
+        target:'',
+        display:false,
+    };
 
     render() {
         return <Modal icon='fas fa-question-circle' title={this.props.title} target={this.props.target} display={this.props.display} closable>

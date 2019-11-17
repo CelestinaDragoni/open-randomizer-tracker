@@ -10,15 +10,22 @@
     flex-grow: 1
     .ort-layout-classic-left
         display: block
-        width: 250px
+        flex: 0 0 275px
         flex-shrink: 0
         z-index: 999
-    .ort-layout-classic-right
+        overflow-y: overlay
+    .ort-layout-classic-center
         display: flex
         flex-direction: column
         padding: 0px 10px
         flex-grow: 1
         padding-top: 25px
+    .ort-layout-classic-right
+        display: block
+        flex: 0 0 275px
+        flex-shrink: 0
+        z-index: 999
+        overflow-y: overlay
     .ort-layout-classic-broadcast
         position: fixed
         top: 0
@@ -30,12 +37,13 @@
         background: linear-gradient(360deg, $color-darker 0%, $color-darkest 100%)
         color: $color-font
         width: 100%
-        min-width: 700px
-        padding-left: 250px
+        min-width: 1200px
+        padding-left: 275px
+        padding-right: 275px
     .ort-help
         position: absolute
         bottom: 10px
-        right: 10px
+        right: 285px
         cursor: pointer
         font-size: 32px
         &:hover
@@ -44,8 +52,10 @@
         padding-top: 0
         .ort-layout-classic-left
             display: none
-        .ort-layout-classic-right
+        .ort-layout-classic-center
             padding: 0
+        .ort-layout-classic-right
+            display: none
         .ort-layout-classic-broadcast
             display: none
         .ort-help

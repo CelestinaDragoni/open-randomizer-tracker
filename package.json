@@ -8,6 +8,7 @@
   "dependencies": {
     "clone": "^2.1.2",
     "electron-store": "^3.2.0",
+    "react-color": "^2.17.3",
     "require": "^2.4.20"
   },
   "devDependencies": {
@@ -50,8 +51,9 @@
   },
   "scripts": {
     "start": "electron ./build/electron.js & webpack --watch",
-    "build": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder",
-    "build-web": "rm -Rf ./build && rm -Rf ./dist && webpack --config webpack-web.config.js"
+    "build": "webpack",
+    "bundle": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder",
+    "bundle-web": "rm -Rf ./build && rm -Rf ./dist && webpack --config webpack-web.config.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -73,7 +75,7 @@
     ],
     "extraFiles": [
       {
-        "from": "public/resources/icons",
+        "from": "src/public/shared/resources/icons",
         "to": "icons",
         "filter": [
           "**/*"
@@ -81,16 +83,16 @@
       }
     ],
     "linux": {
-      "icon": "build/resources/icons/icon.png",
+      "icon": "src/public/shared/resources/icon.png",
       "target": "tar.gz",
       "category": "Multimedia"
     },
     "win": {
-      "icon": "build/resources/icons/icon.ico",
+      "icon": "src/public/shared/resources/icon.ico",
       "target": "portable"
     },
     "mac": {
-      "icon": "build/resources/icons/icon.icns",
+      "icon": "src/public/shared/resources/icon.icns",
       "target": "dmg"
     }
   }
