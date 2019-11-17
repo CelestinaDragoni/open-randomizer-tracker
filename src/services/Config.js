@@ -1,37 +1,44 @@
 import ConfigDefault from '../schemas/config.json';
 import clone from 'clone';
-import store from 'electron-store';
 
 export default class ConfigService {
 
+    /** Electron or Web Controller, Handles Various Items **/
+    controller = null;
+
+    /** Data storage array **/
     _data = {};
     _store = null;
     static instance = null;
     static locales = ['en', 'de', 'es', 'fr', 'ja', 'ko', 'ru'];
 
-    static getInstance(updateHandler, rootController) {
+    static getInstance(updateHandler, controller) {
         if (ConfigService.instance) {
             return ConfigService.instance;
         }
-        return ConfigService.instance = new ConfigService(updateHandler, rootController);  
+        return ConfigService.instance = new ConfigService(updateHandler, controller);  
     }
 
     // Getters
-    constructor(updateHandler, rootController) {
-        this._store = new store();
-        if (this._store.get('config')) {
-            this._data = this._store.get('config');
-        } else {
+    constructor(updateHandler, controller) {
+        
+        this.onUpdate   = updateHandler;
+        this.controller = controller;
+
+        // Electron controller uses electron-store, web uses local storage.
+        this._data = this.controller.getConfig();
+        if (!this._data) {
             this._data = clone(ConfigDefault);
         }
-        this.onUpdate = updateHandler;
-        this.rootController = rootController;
+        
     }
 
     _writeConfig(callback=false) {
 
         this.onUpdate();
-        this._store.set('config', this._data);
+
+        // Electron controller uses electron-store, web uses local storage.
+        this.controller.setConfig(this._data);
 
         if (callback) {
             callback();
@@ -173,7 +180,11 @@ export default class ConfigService {
 
     set alwaysOnTop(v) {
         this._data.alwaysOnTop = v;
-        this._writeConfig(this.rootController.onAlwaysOnTop);
+        if (this.controller.onAlwaysOnTop) {
+            this._writeConfig(this.controller.onAlwaysOnTop);
+        } else {
+            this._writeConfig();
+        }
     }
 
     set timer(v) {

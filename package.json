@@ -49,6 +49,7 @@
     "write-file-atomic": "^3.0.1"
   },
   "scripts": {
+    "translate": "node auto-translate.js",
     "start": "electron ./build/electron.js & webpack --watch",
     "build": "webpack",
     "bundle": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder",
