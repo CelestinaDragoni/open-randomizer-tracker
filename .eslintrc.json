@@ -28,7 +28,6 @@
         }
     },
     "rules": {
-        //"react/no-direct-mutation-state":0,
         "react/prop-types":1,
         "indent": [
             1,
