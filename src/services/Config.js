@@ -146,6 +146,14 @@ export default class ConfigService {
     }
 
     /**
+     * GETTER: Font color.
+     * @return {string} v
+     **/
+    get fontColor() {
+        return this._data.fontColor;
+    }
+
+    /**
      * GETTER: Zoom level.
      * @return {number} v
      **/
@@ -178,6 +186,14 @@ export default class ConfigService {
     }
 
     /**
+     * GETTER: Timer font color
+     * @return {string} v
+     **/
+    get timerFontColor() {
+        return this._data.timerFontColor;
+    }
+
+    /**
      * GETTER: Timer font size. (pixels)
      * @return {integer} v
      **/
@@ -207,6 +223,14 @@ export default class ConfigService {
      **/
     get gameTitleFont() {
         return this._data.gameTitleFont;
+    }
+
+    /**
+     * GETTER: Game title font color. 
+     * @return {string} v
+     **/
+    get gameTitleFontColor() {
+        return this._data.gameTitleFontColor;
     }
 
     /**
@@ -318,15 +342,20 @@ export default class ConfigService {
      **/
     set backgroundColor(v) {
         v = v.trim();
-
-        if (v.length > 7) {
-            v = v.substring(0, 7);
-        }
-
         this._data.backgroundColor = v;
         this._writeConfig();
     }
 
+    /**
+     * SETTER: Font color, trims it accordingly.
+     * @param {string} v
+     * @return {void}
+     **/
+    set fontColor(v) {
+        v = v.trim();
+        this._data.fontColor = v;
+        this._writeConfig();
+    }
     /**
      * SETTER: Zoom level.
      * @param {integer} v
@@ -372,6 +401,16 @@ export default class ConfigService {
     }
 
     /**
+     * SETTER: Timer font color.
+     * @param {string} v
+     * @return {void}
+     **/
+    set timerFontColor(v) {
+        this._data.timerFontColor = v;
+        this._writeConfig();
+    }
+
+    /**
      * SETTER: Timer font size. (Pixels)
      * @param {integer} v
      * @return {void}
@@ -408,6 +447,16 @@ export default class ConfigService {
      **/
     set gameTitleFont(v) {
         this._data.gameTitleFont = v;
+        this._writeConfig();
+    }
+
+    /**
+     * SETTER: Game title font color.
+     * @param {string} v
+     * @return {void}
+     **/
+    set gameTitleFontColor(v) {
+        this._data.gameTitleFontColor = v;
         this._writeConfig();
     }
 

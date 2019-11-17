@@ -41,6 +41,7 @@ export default class StyleView extends React.Component {
         const {
             timer, 
             timerFont, 
+            timerFontColor,
             timerFontSize,
             timerPadding,
             fontOptions
@@ -52,19 +53,25 @@ export default class StyleView extends React.Component {
 
         return <>
             <Container>
-                <strong>{_('timer-font')}</strong>
+                <strong>{_('font-family')}</strong>
             </Container>
             <Container>
                 <Select target='timerFont' value={timerFont} options={fontOptions} onChange={this.onChange}/>
             </Container>
             <Container>
-                <strong>{_('timer-font-size')} ({timerFontSize}px)</strong>
+                <strong>{_('font-color')}</strong>
+            </Container>
+            <Container>
+                <Input target='timerFontColor' value={timerFontColor} onChange={this.onChange}/>
+            </Container>
+            <Container>
+                <strong>{_('font-size')} ({timerFontSize}px)</strong>
             </Container>
             <Container>
                 <Slider target='timerFontSize' value={timerFontSize} min={12} max={100} step={1} onChange={this.onChange}/>
             </Container>
             <Container>
-                <strong>{_('timer-padding')} ({timerPadding}px)</strong>
+                <strong>{_('padding')} ({timerPadding}px)</strong>
             </Container>
             <Container>
                 <Slider target='timerPadding' value={timerPadding} min={0} max={100} step={1} onChange={this.onChange}/>
@@ -76,7 +83,8 @@ export default class StyleView extends React.Component {
 
         const {
             gameTitle, 
-            gameTitleFont, 
+            gameTitleFont,
+            gameTitleFontColor,
             gameTitleFontSize,
             gameTitlePadding,
             fontOptions
@@ -88,19 +96,25 @@ export default class StyleView extends React.Component {
 
         return <>
             <Container>
-                <strong>{_('game-title-font')}</strong>
+                <strong>{_('font-family')}</strong>
             </Container>
             <Container>
                 <Select target='gameTitleFont' value={gameTitleFont} options={fontOptions} onChange={this.onChange}/>
             </Container>
             <Container>
-                <strong>{_('game-title-font-size')} ({gameTitleFontSize}px)</strong>
+                <strong>{_('font-color')}</strong>
+            </Container>
+            <Container>
+                <Input target='gameTitleFontColor' value={gameTitleFontColor} onChange={this.onChange}/>
+            </Container>
+            <Container>
+                <strong>{_('font-size')} ({gameTitleFontSize}px)</strong>
             </Container>
             <Container>
                 <Slider target='gameTitleFontSize' value={gameTitleFontSize} min={12} max={100} step={1} onChange={this.onChange}/>
             </Container>
             <Container>
-                <strong>{_('game-title-padding')} ({gameTitlePadding}px)</strong>
+                <strong>{_('padding')} ({gameTitlePadding}px)</strong>
             </Container>
             <Container>
                 <Slider target='gameTitlePadding' value={gameTitlePadding} min={0} max={100} step={1} onChange={this.onChange}/>
@@ -112,9 +126,10 @@ export default class StyleView extends React.Component {
 
         const {
             backgroundColor, 
-            zoom, 
+            zoom,
+            fontColor,
             timer, 
-            gameTitle, 
+            gameTitle,
         } = this.context.config;
 
         const zoomPercentage = zoom*100;
@@ -123,12 +138,18 @@ export default class StyleView extends React.Component {
             <HeaderSidebarPrimary>{_('styles')}</HeaderSidebarPrimary>
             <div className='ort-sidebar-config-content'>
 
-                <HeaderSidebarSecondary>{_('options')}</HeaderSidebarSecondary>
+                <HeaderSidebarSecondary>{_('module')}</HeaderSidebarSecondary>
                 <Container>
                     <strong>{_('background-color')}</strong>
                 </Container>
                 <Container>
                     <Input target='backgroundColor' value={backgroundColor} onChange={this.onChange}/>
+                </Container>
+                <Container>
+                    <strong>{_('font-color')}</strong>
+                </Container>
+                <Container>
+                    <Input target='fontColor' value={fontColor} onChange={this.onChange}/>
                 </Container>
                 <Container>
                     <strong>{_('zoom-level')} ({zoomPercentage}%)</strong>

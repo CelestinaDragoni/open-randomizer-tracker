@@ -12,30 +12,54 @@ export default class ModuleView extends React.Component {
 
     render() {
 
-        const {zoom, timer, timerFont, timerFontSize, timerPadding, gameTitle, gameTitleFontSize, gameTitleFont, gameTitlePadding} = this.context.config;
-        const style = {'transform':`scale(${zoom})`};
-        let moduleComponent = null;
+        const {
+            zoom,
+            fontColor,
+            timer, 
+            timerFont, 
+            timerFontColor,
+            timerFontSize, 
+            timerPadding, 
+            gameTitle, 
+            gameTitleFontColor,
+            gameTitleFontSize,
+            gameTitleFont, 
+            gameTitlePadding,
+            module 
+        } = this.context.config;
 
-        switch(this.context.config.module) {
+        // Module Styles
+        const styleWrapper = {
+            'transform':`scale(${zoom})`
+        };
+        const styleComponent = {
+            'color':fontColor
+        };
+
+        // Get Module Component
+        let moduleComponent = null;
+        switch(module) {
         case 'lttp':
-            moduleComponent = <LinkToThePastModule/>;
+            moduleComponent = <div style={styleComponent}><LinkToThePastModule/></div>;
             break;
         default:
             moduleComponent = <div>Invalid Module</div>;
         }
 
+        // Timer Element
         let elementTimer = null;
         if (timer) {
-            elementTimer = <Timer fontSize={timerFontSize} fontFamily={timerFont} padding={timerPadding}/>;
+            elementTimer = <Timer color={timerFontColor} fontSize={timerFontSize} fontFamily={timerFont} padding={timerPadding}/>;
         }
 
+        // Game Title Element
         let elementGameTitle = null;
         if (gameTitle.trim() !== '') {
-            elementGameTitle = <GameTitle fontSize={gameTitleFontSize} fontFamily={gameTitleFont} padding={gameTitlePadding}>{gameTitle}</GameTitle>;
+            elementGameTitle = <GameTitle color={gameTitleFontColor} fontSize={gameTitleFontSize} fontFamily={gameTitleFont} padding={gameTitlePadding}>{gameTitle}</GameTitle>;
         }
 
         return <div className='ort-module'>
-            <div className='ort-module-wrapper' style={style}>
+            <div className='ort-module-wrapper' style={styleWrapper}>
                 {elementTimer}
                 {elementGameTitle}
                 {moduleComponent}

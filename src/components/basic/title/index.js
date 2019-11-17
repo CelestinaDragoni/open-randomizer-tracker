@@ -10,6 +10,7 @@ export default class GameTitle extends React.PureComponent {
         fontFamily:PropTypes.string,
         padding:PropTypes.number,
         children:PropTypes.element,
+        color:PropTypes.string
     };
 
     /** React PropType Defaults **/
@@ -18,6 +19,7 @@ export default class GameTitle extends React.PureComponent {
         fontFamily:'Sans-Serif',
         padding:5,
         children:null,
+        color:'',
     };
 
     render() {
@@ -25,6 +27,7 @@ export default class GameTitle extends React.PureComponent {
             'fontSize':`${this.props.fontSize}px`,
             'fontFamily':this.props.fontFamily,
             'marginBottom':`${this.props.padding}px`,
+            'color':this.props.color
         };
         return <div className='ort-game-title' style={style}>{this.props.children}</div>;
     }

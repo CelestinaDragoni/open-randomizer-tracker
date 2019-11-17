@@ -15,14 +15,17 @@
     "moduleLayout":"standard",
     "moduleStateDefault":{},
     "moduleState":{},
+    "moduleFontColor":"",
     "alwaysOnTop":false,
     "timer":false,
     "timerFontSize":32,
     "timerFont":"sans-serif",
+    "timerFontColor":"",
     "timerPadding":5,
     "gameTitle":"",
     "gameTitleFontSize":24,
     "gameTitleFont":"sans-serif",
+    "gameTitleFontColor":"",
     "gameTitlePadding":5,
     "modalHelp":false
 }

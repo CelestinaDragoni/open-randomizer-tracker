@@ -100,7 +100,7 @@ export default class ElectronController {
      * @return {void}
      **/
     onToggleBroadcast = (e) => {
-        console.log('here', e.key);
+
         if(e.key === "Escape") {
 
             // Close Modals on ESC
@@ -138,5 +138,6 @@ export default class ElectronController {
 
             }
         }
+        
     }
 }

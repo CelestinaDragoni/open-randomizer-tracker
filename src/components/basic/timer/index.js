@@ -8,14 +8,16 @@ export default class Timer extends React.Component {
     static propTypes = {
         fontSize:PropTypes.integer,
         fontFamily:PropTypes.string,
-        padding:PropTypes.integer
+        padding:PropTypes.integer,
+        color:PropTypes.string
     };
 
     /** React PropType Defaults **/
     static defaultProps = {
         fontSize:14,
         fontFamily:"Sans-Serif",
-        padding:5
+        padding:5,
+        color:''
     };
 
     /** React state **/
@@ -138,6 +140,7 @@ export default class Timer extends React.Component {
             'fontSize':`${this.props.fontSize}px`,
             'fontFamily':this.props.fontFamily,
             'marginBottom':`${this.props.padding}px`,
+            'color':this.props.color
         };
         return <div className='ort-timer' style={style}>
             {this.state.timeFormat}
