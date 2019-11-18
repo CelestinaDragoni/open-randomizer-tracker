@@ -117,6 +117,16 @@
         "triforce":{
             "label":"Triforce",
             "counter":20
+        },
+        "ganon-crystals": {
+            "label":"Ganon Vulnerable",
+            "counter":7,
+            "default":7
+        },
+        "tower-crystals": {
+            "label":"Tower Open",
+            "counter":7,
+            "default":7
         }
     },
     "dungeons":{

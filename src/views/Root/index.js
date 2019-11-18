@@ -64,9 +64,6 @@ export default class RootViewController extends React.Component {
             props.controller.onAlwaysOnTop();
         }
 
-        // External Link Handler
-        window._link = this.onExternalLink;
-
     }
 
     onServiceUpdate = () => {

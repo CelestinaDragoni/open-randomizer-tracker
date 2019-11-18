@@ -27,7 +27,7 @@
     "lttp-keysanity-triforce": "Keysanity Triforce",
     "help-title": "Aidez-moi",
     "help-broadcast-header": "Contrôle de diffusion",
-    "help-broadcast-line-1": "Appuyez sur Echap pour basculer en mode diffusion lorsque vous utilisez la diffusion ou l'enregistrement.",
+    "help-broadcast-line-1": "Appuyez sur Echap pour changer le mode de diffusion lorsque vous diffusez ou enregistrez.",
     "help-timer-header": "Contrôle de la minuterie",
     "help-timer-line-1": "Activez la minuterie à l'aide de la bascule située dans le panneau de configuration à gauche.",
     "help-timer-line-2": "Les touches rapides pour la minuterie sont:",

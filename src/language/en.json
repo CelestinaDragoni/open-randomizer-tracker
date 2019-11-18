@@ -31,7 +31,7 @@
 
     "help-title":"Help",
     "help-broadcast-header":"Broadcast Control",
-    "help-broadcast-line-1":"Press ESC to toggle broadcast mode when you're using streaming or recording.",
+    "help-broadcast-line-1":"Press ESC to toggle broadcast mode when you're streaming or recording.",
     "help-timer-header":"Timer Control",
     "help-timer-line-1":"Enable timer using the toggle in the configuration panel to the left.",
     "help-timer-line-2":"Hotkeys for the timer are:",

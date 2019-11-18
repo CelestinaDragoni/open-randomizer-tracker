@@ -29,7 +29,8 @@ export default class ElectronController {
         window.addEventListener('keyup', this.onToggleBroadcast);
         remote.getCurrentWindow().on('resize', this.onWindowChange);
         remote.getCurrentWindow().on('move', this.onWindowChange);
-    
+        
+        window._link = this.onExternalLink;
     }
 
     /**

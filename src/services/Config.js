@@ -80,12 +80,28 @@ export default class ConfigService {
             {label:'Sans-Serif', value:'sans-serif'},
             {label:'Serif', value:'serif'},
             {label:'Monospace', value:'monospace'},
+
+            // Roboto (Google)
             {label:'Roboto', value:'roboto'},
-            {label:'Roboto Medium', value:'roboto-medium'},
+            {label:'Roboto Thin', value:'roboto-thin'},
             {label:'Roboto Bold', value:'roboto-bold'},
+            {label:'Roboto Black', value:'roboto-black'},
+
+            // Fira Sans (Google, Carrois Apostrophe)
+            {label:'Fira', value:'fira'},
+            {label:'Fira Thin', value:'fira-thin'},
+            {label:'Fira Bold', value:'fira-bold'},
+            {label:'Fira Black', value:'fira-black'},
+
+            // Proza Libre (Google, Jasper de Waard)
+            {label:'Proza Libre', value:'proza'},
+            {label:'Proza Libre Bold', value:'proza-bold'},
+
+            // Random Pixel Fonts
             {label:'Commodore 64', value:'c64'},
             {label:'Vibes', value:'vibes'},
-            {label:'Nokia', value:'nokia'},
+            {label:'Famicom ', value:'nes'},
+            {label:'Code Page 437', value:'codepage'},
         ];
     }
 

@@ -122,11 +122,15 @@ export default class ModuleLayout_LinkToThePast_ItemsComponent extends React.Com
         const elements = [];
 
         for (const key in config.items) {
-            if (key === 'triforce' && !this.props.triforce) {
-                continue;
-            }
+
             const item = config.items[key];
-            const element = this._renderItem(key, item, state);
+            let element = null;
+            if (key === 'triforce' && !this.props.triforce) {
+                element = <div key={key}/>;
+            } else {
+                element = this._renderItem(key, item, state);
+            }
+            
             elements.push(element);
         }
 

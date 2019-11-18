@@ -4,6 +4,8 @@ const glob  = require("glob");
 const context = path.resolve(__dirname, "build");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const yarnPackage = require("./package.json");
 
 $entries = {'index':'./src/index.js'};
 
@@ -44,7 +46,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(ttf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|svg|otf|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -90,7 +92,10 @@ module.exports = {
         new CopyWebpackPlugin([
             {from: '**/*', to: './', context:'./src/public/electron'},
             {from: '**/*', to: './', context:'./src/public/shared'}
-        ], {})
+        ], {}),
+        new webpack.DefinePlugin({
+            VERSION: JSON.stringify(yarnPackage.version)
+        })
     ],
     optimization: {
         splitChunks: {

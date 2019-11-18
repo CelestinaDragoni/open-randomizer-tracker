@@ -14,6 +14,7 @@ export default class WebController {
     init(controller) {
         this.controller = controller;
         window.addEventListener('keyup', this.onToggleBroadcast);
+        window._link = this.onExternalLink;
     }
 
     /**

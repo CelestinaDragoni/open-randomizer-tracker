@@ -62,7 +62,7 @@ export default class StyleView extends React.Component {
                 <strong>{_('font-color')}</strong>
             </Container>
             <Container>
-                <Input target='timerFontColor' value={timerFontColor} onChange={this.onChange}/>
+                <Input placeholder='#FFFFFF' target='timerFontColor' value={timerFontColor} onChange={this.onChange}/>
             </Container>
             <Container>
                 <strong>{_('font-size')} ({timerFontSize}px)</strong>
@@ -105,7 +105,7 @@ export default class StyleView extends React.Component {
                 <strong>{_('font-color')}</strong>
             </Container>
             <Container>
-                <Input target='gameTitleFontColor' value={gameTitleFontColor} onChange={this.onChange}/>
+                <Input placeholder='#FFFFFF' target='gameTitleFontColor' value={gameTitleFontColor} onChange={this.onChange}/>
             </Container>
             <Container>
                 <strong>{_('font-size')} ({gameTitleFontSize}px)</strong>
@@ -117,7 +117,7 @@ export default class StyleView extends React.Component {
                 <strong>{_('padding')} ({gameTitlePadding}px)</strong>
             </Container>
             <Container>
-                <Slider target='gameTitlePadding' value={gameTitlePadding} min={0} max={100} step={1} onChange={this.onChange}/>
+                <Slider target='gameTitlePadding' value={gameTitlePadding} min={-25} max={100} step={1} onChange={this.onChange}/>
             </Container>
         </>;
     }
@@ -143,7 +143,7 @@ export default class StyleView extends React.Component {
                     <strong>{_('background-color')}</strong>
                 </Container>
                 <Container>
-                    <Input target='backgroundColor' value={backgroundColor} onChange={this.onChange}/>
+                    <Input placeholder='#000000' target='backgroundColor' value={backgroundColor} onChange={this.onChange}/>
                 </Container>
                 <Container>
                     <strong>{_('font-color')}</strong>

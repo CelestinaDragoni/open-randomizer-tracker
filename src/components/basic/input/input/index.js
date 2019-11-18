@@ -9,7 +9,8 @@ export default class Input extends React.Component {
         onChange:PropTypes.function,
         target:PropTypes.string,
         value:PropTypes.mixed,
-        maxLength:PropTypes.string
+        maxLength:PropTypes.string,
+        placeholder:PropTypes.string
     };
 
     /** React PropType Defaults **/
@@ -17,7 +18,8 @@ export default class Input extends React.Component {
         onChange:null,
         target:'',
         value:'',
-        maxLength:'128'
+        maxLength:'128',
+        placeholder:''
     };
 
     onChange = (e) => {
@@ -31,11 +33,8 @@ export default class Input extends React.Component {
     }
 
     render() {
-        let maxLength = '128';
-        if (this.props.maxLength) {
-            maxLength = this.props.maxLength;
-        }
-        return <input maxLength={maxLength} type='text' value={this.props.value} onChange={this.onChange} className='ort-input'/>;
+        const {placeholder, maxLength} = this.props;
+        return <input maxLength={maxLength} placeholder={placeholder} type='text' value={this.props.value} onChange={this.onChange} className='ort-input'/>;
     }
 
 }

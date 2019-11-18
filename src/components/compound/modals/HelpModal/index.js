@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Modal from '../../../basic/modal';
+import "./index.sass";
 
 export default class ModalHelp extends React.Component {
 
@@ -21,6 +22,11 @@ export default class ModalHelp extends React.Component {
     render() {
         return <Modal icon='fas fa-question-circle' title={this.props.title} target={this.props.target} display={this.props.display} closable>
             <div className='ort-content'>
+                <img src='resources/logo.png' alt='Open Randomizer Tracker' className='ort-logo'/>
+                <p>Version: {VERSION}</p>
+                <p><a onClick={_link} href='http://openrandomizertracker.com/'>http://openrandomizertracker.com/</a></p>
+            </div>
+            <div className='ort-content'>
                 <h2>{_('help-broadcast-header')}</h2>
                 <p>{_('help-broadcast-line-1')}</p>
             </div>
@@ -30,7 +36,6 @@ export default class ModalHelp extends React.Component {
                 <p>{_('help-timer-line-2')}</p>
                 <ul>
                     <li>{_('help-timer-line-3')}</li>
-                    <li>{_('help-timer-line-4')}</li>
                     <li>{_('help-timer-line-5')}</li>
                 </ul>
             </div>

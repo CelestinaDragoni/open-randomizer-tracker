@@ -37,7 +37,9 @@ export default class ModuleLayout_LinkToThePast_Standard extends React.Component
         const state = {items:{}, dungeons:{}};
 
         for (const key in config.items) {
-            state.items[key] = {active:false, level:0, counter:0};
+            const counter = config.items[key].default ? config.items[key].default : 0;
+            const active = counter ? true : false;
+            state.items[key] = {active:active, level:0, counter:counter};
         }
 
         for (const key in config.dungeons) {
