@@ -49,10 +49,9 @@ export default class RootViewController extends React.Component {
         this.services.language      = LanguageService.getInstance(this.services.config);
         this.services.module        = ModuleService.getInstance();
 
-        // Don't start in broadcast mode
-        if (this.services.config.broadcast) {
-            this.services.config.broadcast = false;
-        }
+        // Stuff that shouldn't be true when launching.
+        this.services.config.broadcast = false;
+        this.services.config.modalHelp = false;
 
         // Reload bounds after launch (Electron only)
         if (props.controller.setWindowBounds) {
