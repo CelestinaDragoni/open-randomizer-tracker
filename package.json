@@ -87,16 +87,16 @@
       }
     ],
     "linux": {
-      "icon": "src/public/shared/resources/icon.png",
+      "icon": "src/public/shared/resources/icons/icon.png",
       "target": "tar.gz",
       "category": "Multimedia"
     },
     "win": {
-      "icon": "src/public/shared/resources/icon.ico",
+      "icon": "src/public/shared/resources/icons/icon.ico",
       "target": "portable"
     },
     "mac": {
-      "icon": "src/public/shared/resources/icon.icns",
+      "icon": "src/public/shared/resources/icons/icon.icns",
       "target": "dmg"
     }
   }
