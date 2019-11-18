@@ -1,6 +1,6 @@
 {
   "name": "open-randomizer-tracker",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "BSD-4-Clause",
   "author": "Anthony Mattera",
   "private": true,
@@ -16,6 +16,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "@babel/preset-stage-0": "^7.0.0",
+    "@google-cloud/translate": "^5.0.2",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-react-css-modules": "^5.2.6",
@@ -23,8 +24,9 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "copy-webpack-plugin": "^5.0.5",
     "css-loader": "^3.2.0",
-    "electron": "^4.0.6",
-    "electron-builder": "^20.38.5",
+    "dotenv": "^8.2.0",
+    "electron": "^7.1.1",
+    "electron-builder": "^21.2.0",
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.13.0",
     "eslint-loader": "^3.0.2",
@@ -49,8 +51,13 @@
     "write-file-atomic": "^3.0.1"
   },
   "scripts": {
-    "start": "electron ./build/electron.js & webpack --watch",
-    "build": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder"
+    "translate": "node translate.js",
+    "translate-clean": "node translate.js --clean",
+    "start": "webpack && electron ./build/electron.js & webpack --watch",
+    "start-web": "webpack-dev-server --config webpack-web.config.js",
+    "build": "webpack",
+    "build-web": "webpack --config webpack-web.config.js",
+    "bundle": "rm -Rf ./build && rm -Rf ./dist && webpack && electron-builder"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -72,7 +79,7 @@
     ],
     "extraFiles": [
       {
-        "from": "public/resources/icons",
+        "from": "src/public/shared/resources/icons",
         "to": "icons",
         "filter": [
           "**/*"
@@ -80,16 +87,16 @@
       }
     ],
     "linux": {
-      "icon": "build/resources/icons/icon.png",
+      "icon": "src/public/shared/resources/icon.png",
       "target": "tar.gz",
       "category": "Multimedia"
     },
     "win": {
-      "icon": "build/resources/icons/icon.ico",
+      "icon": "src/public/shared/resources/icon.ico",
       "target": "portable"
     },
     "mac": {
-      "icon": "build/resources/icons/icon.icns",
+      "icon": "src/public/shared/resources/icon.icns",
       "target": "dmg"
     }
   }

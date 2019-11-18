@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import clone from "clone";
 import "./styles.sass";
 
@@ -7,8 +8,19 @@ import {RootContext} from '../../../context/RootContext';
 
 export default class ModuleLayout_LinkToThePast_Keysanity extends React.Component {
 
+    /** React PropTypes **/
+    static propTypes = {
+        config:PropTypes.object.isRequired,
+        triforce:PropTypes.bool,
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        triforce:false
+    };
+
     static contextType = RootContext;
-    configService = null
+    configService = null;
 
     /** Handles Marker Enumeration **/
     markerEnum = ["unknown", "crystal", "redcrystal", "courage", "power", "wisdom"];
@@ -25,7 +37,9 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
         const state = {items:{}, dungeons:{}};
 
         for (const key in config.items) {
-            state.items[key] = {active:false, level:0, counter:0};
+            const counter = config.items[key].default ? config.items[key].default : 0;
+            const active = counter ? true : false;
+            state.items[key] = {active:active, level:0, counter:counter};
         }
 
         for (const key in config.dungeons) {
@@ -158,7 +172,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
     /**
      * Private function, Renders the dungeon markers and binds actions.
      * @param {string} key - Dungeon Key
-     * @param {object} item - Dungeon properties
+     * @param {object} dungeon - Dungeon properties
      * @param {object} state - The current state of this class
      * @return {ReactDOM}
      */
@@ -190,7 +204,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
     /**
      * Private function, Renders the dungeon master keys and binds actions.
      * @param {string} key - Dungeon Key
-     * @param {object} item - Dungeon properties
+     * @param {object} dungeon - Dungeon properties
      * @param {object} state - The current state of this class
      * @return {ReactDOM}
      */
@@ -216,7 +230,7 @@ export default class ModuleLayout_LinkToThePast_Keysanity extends React.Componen
     /**
      * Private function, Renders the dungeon key counters and binds actions.
      * @param {string} key - Dungeon Key
-     * @param {object} item - Dungeon properties
+     * @param {object} dungeon - Dungeon properties
      * @param {object} state - The current state of this class
      * @return {ReactDOM}
      */

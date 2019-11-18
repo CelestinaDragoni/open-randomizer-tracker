@@ -1,7 +1,22 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./index.sass";
 
 export default class Toggle extends React.Component {
+
+    /** React PropTypes **/
+    static propTypes = {
+        onChange:PropTypes.function,
+        target:PropTypes.string,
+        value:PropTypes.bool
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        onChange:null,
+        target:'',
+        value:false
+    };
 
     onChange = (e) => {
         if (this.props.onChange) {

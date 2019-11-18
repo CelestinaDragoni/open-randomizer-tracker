@@ -1,8 +1,21 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import {RootContext} from '../../../../context/RootContext';
 
 export default class ModuleLayout_LinkToThePast_ItemsComponent extends React.Component {
+
+    /** React PropTypes **/
+    static propTypes = {
+        config:PropTypes.object.isRequired,
+        triforce:PropTypes.bool,
+        keysanity:PropTypes.bool
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        triforce:false,
+        keysanity:false
+    };
 
     static contextType = RootContext;
     config = null;
@@ -61,6 +74,8 @@ export default class ModuleLayout_LinkToThePast_ItemsComponent extends React.Com
 
         this.config.moduleState = state;
 
+        return false;
+
     }
 
     /**
@@ -107,11 +122,15 @@ export default class ModuleLayout_LinkToThePast_ItemsComponent extends React.Com
         const elements = [];
 
         for (const key in config.items) {
-            if (key === 'triforce' && !this.props.triforce) {
-                continue;
-            }
+
             const item = config.items[key];
-            const element = this._renderItem(key, item, state);
+            let element = null;
+            if (key === 'triforce' && !this.props.triforce) {
+                element = <div key={key}/>;
+            } else {
+                element = this._renderItem(key, item, state);
+            }
+            
             elements.push(element);
         }
 

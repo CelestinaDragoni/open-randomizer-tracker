@@ -2,8 +2,13 @@ import Modules from '../schemas/modules.json';
 
 export default class ModuleService {
 
+    /** Singleton Instance **/
     static instance = null;
 
+    /**
+     * Singleton constructor
+     * @return {ModuleService}
+     **/
     static getInstance() {
         if (ModuleService.instance) {
             return ModuleService.instance;
@@ -11,6 +16,10 @@ export default class ModuleService {
         return ModuleService.instance = new ModuleService(); 
     }
 
+    /**
+     * Get module options from configuration file.
+     * @return {array}
+     **/
     options() {
 
         const options = [];
@@ -27,6 +36,11 @@ export default class ModuleService {
 
     }
 
+    /**
+     * Get module layout options from module key and configuration file.
+     * @param {string} moduleKey
+     * @return {array}
+     **/
     layoutOptions(moduleKey) {
 
         const options = [];

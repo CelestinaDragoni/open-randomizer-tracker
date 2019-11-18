@@ -1,7 +1,32 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./index.sass";
 
 export default class Button extends React.Component {
+
+    /** React PropTypes **/
+    static propTypes = {
+        disabled:PropTypes.bool,
+        onClick:PropTypes.function,
+        value:PropTypes.mixed,
+        type:PropTypes.string,
+        href:PropTypes.href,
+        target:PropTypes.href,
+        icon:PropTypes.icon,
+        children:PropTypes.element
+    };
+
+    /** React PropType Defaults **/
+    static defaultProps = {
+        disabled:false,
+        onClick:null,
+        value:'',
+        type:'',
+        href:null,
+        target:null,
+        icon:null,
+        children:null
+    };
 
     static Type = {
         Menu:'menu',
@@ -74,7 +99,7 @@ export default class Button extends React.Component {
             icon = <i className={`${this.props.icon}`}/>;
         }
 
-        return <a id={this.props.id} className={`button ${styleName}`} onClick={onClick} href={href} target={hrefTarget}>
+        return <a className={`button ${styleName}`} onClick={onClick} href={href} target={hrefTarget}>
             {icon}  {this.props.children}
         </a>;
 

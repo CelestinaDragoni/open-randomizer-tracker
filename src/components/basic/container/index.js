@@ -1,14 +1,20 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./index.sass";
 
 export default class Container extends React.PureComponent {
 
-    render() {
+    /** React PropTypes **/
+    static propTypes = {
+        children:PropTypes.element
+    };
 
-        let classes = "";
-        if (this.props.final) {
-            classes="ort-container-final";
-        }
+    /** React PropType Defaults **/
+    static defaultProps = {
+        children:null
+    };
+
+    render() {
 
         let elements = [];
         if (this.props.children && this.props.children.length > 0) {
@@ -24,7 +30,7 @@ export default class Container extends React.PureComponent {
             elements = this.props.children;
         }
 
-        return <div className={`ort-container ${classes}`}>
+        return <div className={`ort-container`}>
             {elements}
         </div>;
     }

@@ -1,0 +1,20 @@
+@import "../../styles/variables.sass";
+
+.ort-sidebar-styles
+    height: 100%
+    background: $color-normal
+    overflow: hidden
+    border: 1px solid $color-darkest
+    .ort-sidebar-styles-content
+        height: 100% 
+        padding-bottom: 50px
+        overflow: auto
+        overflow-x: hidden
+        &::-webkit-scrollbar
+            margin-left: 10px
+            width: 10px
+            height: 10px
+            background: $color-dark
+            border-left: 1px solid $color-normal
+        &::-webkit-scrollbar-thumb
+            background: $color-light
