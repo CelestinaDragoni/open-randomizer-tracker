@@ -9,7 +9,8 @@ export default class Timer extends React.Component {
         fontSize:PropTypes.integer,
         fontFamily:PropTypes.string,
         padding:PropTypes.integer,
-        color:PropTypes.string
+        color:PropTypes.string,
+        web:PropTypes.bool
     };
 
     /** React PropType Defaults **/
@@ -17,7 +18,8 @@ export default class Timer extends React.Component {
         fontSize:14,
         fontFamily:"Sans-Serif",
         padding:5,
-        color:''
+        color:'',
+        web:false
     };
 
     /** React state **/
@@ -86,12 +88,18 @@ export default class Timer extends React.Component {
      * @return {void}
      **/
     onKeyUp = (e) => {
-        if (e.keyCode==112) {
-            this.onStartTimer();
-        } else if (e.keyCode==113) {
-            this.onStopTimer();
-        } else if (e.keyCode==119) {
-            this.reset();
+        if (this.props.web) {
+            if (e.key === "PageUp") {
+                this.onStartTimer();
+            } else if (e.key === "PageDown") {
+                this.reset();
+            }
+        } else {
+            if (e.key === "F1") {
+                this.onStartTimer();
+            } else if (e.key === "F8") {
+                this.reset();
+            }
         }
     }
 

@@ -34,5 +34,7 @@
     "help-timer-line-3": "F1 - Minuterie",
     "help-timer-line-5": "F8 - Réinitialiser la minuterie",
     "help-bug-header": "Signaler des bugs",
-    "help-bug-line-1": "Vous pouvez signaler des bugs sur notre page GitHub ici:"
+    "help-bug-line-1": "Vous pouvez signaler des bugs sur notre page GitHub ici:",
+    "help-timer-line-3-web": "PAGEUP - Basculer la minuterie",
+    "help-timer-line-5-web": "PAGEDOWN - Réinitialiser la minuterie"
 }

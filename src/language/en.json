@@ -37,6 +37,8 @@
     "help-timer-line-2":"Hotkeys for the timer are:",
     "help-timer-line-3":"F1 - Toggle Timer",
     "help-timer-line-5":"F8 - Reset Timer",
+    "help-timer-line-3-web":"PAGEUP - Toggle Timer",
+    "help-timer-line-5-web":"PAGEDOWN - Reset Timer",
     "help-bug-header":"Report Bugs",
     "help-bug-line-1":"You can report bugs on our GitHub page here: "
 }

@@ -149,7 +149,7 @@ export default class StyleView extends React.Component {
                     <strong>{_('font-color')}</strong>
                 </Container>
                 <Container>
-                    <Input target='fontColor' value={fontColor} onChange={this.onChange}/>
+                    <Input placeholder='#FFFFFF' target='fontColor' value={fontColor} onChange={this.onChange}/>
                 </Container>
                 <Container>
                     <strong>{_('zoom-level')} ({zoomPercentage}%)</strong>

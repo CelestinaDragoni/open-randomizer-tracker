@@ -73,14 +73,15 @@ export default class RootViewController extends React.Component {
     render() {
 
         const {backgroundColor, modalHelp} = this.services.config;
+        const web = !this.props.controller.isElectron;
 
         return <RootContext.Provider value={this.services}>
             <LayoutClassic broadcast={this.services.config.broadcast} backgroundColor={backgroundColor}>
-                <ConfigView web={!this.props.controller.isElectron}/>
-                <ModuleView/>
-                <StyleView web={!this.props.controller.isElectron}/>
+                <ConfigView web={web}/>
+                <ModuleView web={web}/>
+                <StyleView web={web}/>
             </LayoutClassic>
-            <HelpModal target='modalHelp' display={modalHelp} title={_('help-title')}/>
+            <HelpModal target='modalHelp' display={modalHelp} title={_('help-title')} web={web}/>
         </RootContext.Provider>;
         
     }

@@ -34,5 +34,7 @@
     "help-timer-line-3": "F1 - Timer umschalten",
     "help-timer-line-5": "F8 - Timer zurücksetzen",
     "help-bug-header": "Fehler melden",
-    "help-bug-line-1": "Sie können Fehler auf unserer GitHub-Seite hier melden:"
+    "help-bug-line-1": "Sie können Fehler auf unserer GitHub-Seite hier melden:",
+    "help-timer-line-3-web": "PAGEUP - Timer umschalten",
+    "help-timer-line-5-web": "PAGEDOWN - Timer zurücksetzen"
 }

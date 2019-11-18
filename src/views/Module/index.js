@@ -61,7 +61,7 @@ export default class ModuleView extends React.Component {
         // Timer Element
         let elementTimer = null;
         if (timer) {
-            elementTimer = <Timer color={timerFontColor} fontSize={timerFontSize} fontFamily={timerFont} padding={timerPadding}/>;
+            elementTimer = <Timer color={timerFontColor} fontSize={timerFontSize} fontFamily={timerFont} padding={timerPadding} web={this.props.web}/>;
         }
 
         // Game Title Element

@@ -3,7 +3,6 @@
 
 # Open Randomizer Tracker
 Simple cross-platform tracker for game randomizers such as Link to the Past. For use with OBS or whatever broadcast suite you use. 
-**Note: This software is currently in beta and still a work in progress...**
 
 ## Package Downloads
 Visit http://openrandomizertracker.com for the latest binary builds for Linux, Windows, or macOS.

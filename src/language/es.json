@@ -34,5 +34,7 @@
     "help-timer-line-3": "F1 - Temporizador de alternancia",
     "help-timer-line-5": "F8 - Restablecer temporizador",
     "help-bug-header": "Informar errores",
-    "help-bug-line-1": "Puede informar errores en nuestra página de GitHub aquí:"
+    "help-bug-line-1": "Puede informar errores en nuestra página de GitHub aquí:",
+    "help-timer-line-3-web": "PAGEUP - Temporizador de alternancia",
+    "help-timer-line-5-web": "PAGEDOWN - Restablecer temporizador"
 }

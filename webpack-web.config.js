@@ -4,6 +4,8 @@ const glob  = require("glob");
 const context = path.resolve(__dirname, "build");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const yarnPackage = require("./package.json");
 
 $entries = {'index':'./src/index-web.js'};
 
@@ -94,6 +96,9 @@ module.exports = {
             {from: '**/*', to: './', context:'./src/public/web'},
             {from: '**/*', to: './', context:'./src/public/shared'}
         ], {}),
+        new webpack.DefinePlugin({
+            VERSION: JSON.stringify(yarnPackage.version)
+        })
     ],
     optimization: {
         splitChunks: {

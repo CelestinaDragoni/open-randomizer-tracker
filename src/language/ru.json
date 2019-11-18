@@ -34,5 +34,7 @@
     "help-timer-line-3": "F1 - таймер переключения",
     "help-timer-line-5": "F8 - Сброс таймера",
     "help-bug-header": "Сообщить об ошибках",
-    "help-bug-line-1": "Вы можете сообщать об ошибках на нашей странице GitHub здесь:"
+    "help-bug-line-1": "Вы можете сообщать об ошибках на нашей странице GitHub здесь:",
+    "help-timer-line-3-web": "PAGEUP - таймер переключения",
+    "help-timer-line-5-web": "PAGEDOWN - Сброс таймера"
 }

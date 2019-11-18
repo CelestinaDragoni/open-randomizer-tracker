@@ -34,5 +34,7 @@
     "help-timer-line-3": "F1-タイマーの切り替え",
     "help-timer-line-5": "F8-タイマーのリセット",
     "help-bug-header": "バグを報告する",
-    "help-bug-line-1": "GitHubページでバグを報告できます："
+    "help-bug-line-1": "GitHubページでバグを報告できます：",
+    "help-timer-line-3-web": "PAGEUP-タイマーの切り替え",
+    "help-timer-line-5-web": "PageDown-タイマーをリセット"
 }
