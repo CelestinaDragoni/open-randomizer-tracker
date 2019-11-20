@@ -20,7 +20,7 @@
     "current-game-title": "Spieltitel",
     "game-title": "Titel",
     "game-title-placeholder": "Geben Sie Text ein, um Ihren Spieletitel zu konfigurieren.",
-    "link-to-the-past": "Zelda: Eine Verbindung zur Vergangenheit",
+    "link-to-the-past": "Die Legende von Zelda: Eine Verbindung zur Vergangenheit",
     "lttp-standard": "Standard",
     "lttp-standard-triforce": "Standard Triforce",
     "lttp-keysanity": "Keysanity",
@@ -36,5 +36,9 @@
     "help-bug-header": "Fehler melden",
     "help-bug-line-1": "Sie können Fehler auf unserer GitHub-Seite hier melden:",
     "help-timer-line-3-web": "PAGEUP - Timer umschalten",
-    "help-timer-line-5-web": "PAGEDOWN - Timer zurücksetzen"
+    "help-timer-line-5-web": "PAGEDOWN - Timer zurücksetzen",
+    "ocarina-of-time": "Die Legende von Zelda: Okarina der Zeit",
+    "oot-standard": "Standard",
+    "zelda1": "Die Legende von Zelda",
+    "zelda1-standard": "Standard"
 }

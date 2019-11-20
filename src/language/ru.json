@@ -20,7 +20,7 @@
     "current-game-title": "Название игры",
     "game-title": "заглавие",
     "game-title-placeholder": "Введите текст, чтобы настроить название игры.",
-    "link-to-the-past": "Зельда: связь с прошлым",
+    "link-to-the-past": "Легенда о Зельде: связь с прошлым",
     "lttp-standard": "Стандарт",
     "lttp-standard-triforce": "Стандарт Triforce",
     "lttp-keysanity": "Keysanity",
@@ -36,5 +36,9 @@
     "help-bug-header": "Сообщить об ошибках",
     "help-bug-line-1": "Вы можете сообщать об ошибках на нашей странице GitHub здесь:",
     "help-timer-line-3-web": "PAGEUP - таймер переключения",
-    "help-timer-line-5-web": "PAGEDOWN - Сброс таймера"
+    "help-timer-line-5-web": "PAGEDOWN - Сброс таймера",
+    "ocarina-of-time": "Легенда о Зельде: окарина времени",
+    "oot-standard": "стандарт",
+    "zelda1": "Легенда о Зельде",
+    "zelda1-standard": "стандарт"
 }

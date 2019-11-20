@@ -20,7 +20,7 @@
     "current-game-title": "게임 제목",
     "game-title": "표제",
     "game-title-placeholder": "게임 제목을 구성 할 텍스트를 입력하십시오.",
-    "link-to-the-past": "젤다 : 과거와의 연결",
+    "link-to-the-past": "젤다의 전설 : 과거와의 연결",
     "lttp-standard": "표준",
     "lttp-standard-triforce": "표준 트라이 포스",
     "lttp-keysanity": "Keysanity",
@@ -36,5 +36,9 @@
     "help-bug-header": "버그 신고",
     "help-bug-line-1": "GitHub 페이지에서 버그를보고 할 수 있습니다 :",
     "help-timer-line-3-web": "PAGEUP-토글 타이머",
-    "help-timer-line-5-web": "PAGEDOWN-타이머 재설정"
+    "help-timer-line-5-web": "PAGEDOWN-타이머 재설정",
+    "ocarina-of-time": "젤다의 전설 : 시간의 오카리나",
+    "oot-standard": "표준",
+    "zelda1": "젤다의 전설",
+    "zelda1-standard": "표준"
 }

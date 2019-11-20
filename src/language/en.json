@@ -23,11 +23,17 @@
     "game-title":"Title",
     "game-title-placeholder":"Enter text to configure your game title.",
 
-    "link-to-the-past":"Zelda: A Link to the Past",
+    "link-to-the-past":"The Legend of Zelda: A Link to the Past",
     "lttp-standard":"Standard",
     "lttp-standard-triforce":"Standard Triforce",
     "lttp-keysanity":"Keysanity",
     "lttp-keysanity-triforce":"Keysanity Triforce",
+
+    "ocarina-of-time":"The Legend of Zelda: Ocarina of Time",
+    "oot-standard":"Standard",
+
+    "zelda1":"The Legend of Zelda",
+    "zelda1-standard": "Standard",
 
     "help-title":"Help",
     "help-broadcast-header":"Broadcast Control",

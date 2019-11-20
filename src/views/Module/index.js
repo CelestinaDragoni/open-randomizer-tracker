@@ -4,7 +4,11 @@ import {RootContext} from '../../context/RootContext';
 
 import Timer from '../../components/basic/timer';
 import GameTitle from '../../components/basic/title';
-import LinkToThePastModule from '../../modules/lttp/controller';
+
+// Game Modules
+import LinkToThePastModule from '../../modules/lttp';
+import OcarinaOfTimeModule from '../../modules/oot';
+import Zelda1 from '../../modules/zelda1';
 
 import "./index.sass";
 
@@ -53,6 +57,12 @@ export default class ModuleView extends React.Component {
         switch(module) {
         case 'lttp':
             moduleComponent = <div style={styleComponent}><LinkToThePastModule/></div>;
+            break;
+        case 'oot':
+            moduleComponent = <div style={styleComponent}><OcarinaOfTimeModule/></div>;
+            break;
+        case 'zelda1':
+            moduleComponent = <div style={styleComponent}><Zelda1/></div>;
             break;
         default:
             moduleComponent = <div>Invalid Module</div>;
