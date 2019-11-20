@@ -1,0 +1,42 @@
+{
+    "items": {
+        "triforce":{
+            "counter":8
+        },
+        "raft":{},
+        "book":{},
+        "ring":{
+            "progressive":true,
+            "styles":["blue", "red"]
+        },
+        "ladder":{},
+        "key":{},
+        "bracelet":{},
+        "boomerang":{
+            "progressive":true,
+            "styles":["standard", "magical"]
+        },
+        "bombs":{},
+        "arrows":{
+            "progressive":true,
+            "styles":["standard", "silver"]
+        },
+        "bow":{},
+        "candle":{
+            "progressive":true,
+            "styles":["blue", "red"]
+        },
+        "sword":{
+            "progressive":true,
+            "styles":["standard", "white", "magical"]
+        },
+        "shield":{
+            "progressive":true,
+            "styles":["standard", "magical"]
+        },
+        "flute":{},
+        "meat":{},
+        "letter":{},
+        "rod":{}
+    }
+}

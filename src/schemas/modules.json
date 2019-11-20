@@ -1,4 +1,10 @@
 {
+    "zelda1":{
+        "label":"zelda1",
+        "layouts":{
+            "standard":"zelda1-standard"
+        }
+    },
     "lttp":{
         "label":"link-to-the-past",
         "layouts":{
@@ -6,6 +12,12 @@
             "standard-triforce":"lttp-standard-triforce",
             "keysanity":"lttp-keysanity",
             "keysanity-triforce":"lttp-keysanity-triforce"
+        }
+    },
+    "oot":{
+        "label":"ocarina-of-time",
+        "layouts":{
+            "standard":"oot-standard"
         }
     }
 }

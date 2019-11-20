@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+- Zelda 1 and Ocarina of Time Modules
+- Local Storage Support for Web Application
+
 ## 1.0.0
 - Customization options such as coloring and padding.
 - Game title can now have multiple lines.

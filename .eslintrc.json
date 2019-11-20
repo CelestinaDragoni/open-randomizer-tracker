@@ -36,6 +36,7 @@
         "camelcase": [
             0
         ],
+        "quote-props": 0,
         "valid-jsdoc": 1,
         "require-jsdoc": 0,
         "no-irregular-whitespace": 0,

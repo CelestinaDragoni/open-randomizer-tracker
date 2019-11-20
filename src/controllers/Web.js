@@ -8,7 +8,7 @@ export default class WebController {
 
     /**
      * Starts binding actions for electron.
-     * @param {RootViewController} 
+     * @param {RootViewController} controller
      * @return {void}
      **/
     init(controller) {
@@ -22,21 +22,23 @@ export default class WebController {
      * @return {mixed}
      **/
     getConfig() {
-        return false;
+        const config = JSON.parse(localStorage.getItem('config'));
+        return config !== null ? config : false;
     }
 
     /**
      * Saves the configuration to the store.
-     * @param {object} Configuration dictionary
+     * @param {object} config - Configuration dictionary
      * @return {void}
      **/
     setConfig(config) {
-        // Do nothing
+        localStorage.setItem('config', JSON.stringify(config));
     }
 
     /**
      * Opens external links.
-     * @return {void}
+     * @param {Event} e
+     * @return {bool}
      **/
     onExternalLink(e) {
         return true;
@@ -44,7 +46,7 @@ export default class WebController {
 
     /**
      * Handles global toggling of the broadcast keys, but it also closes modals, should prob. be renamed.
-     * @param {Event}
+     * @param {Event} e
      * @return {void}
      **/
     onToggleBroadcast = (e) => {

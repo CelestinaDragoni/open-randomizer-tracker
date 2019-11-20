@@ -20,7 +20,7 @@
     "current-game-title": "ゲームタイトル",
     "game-title": "タイトル",
     "game-title-placeholder": "テキストを入力して、ゲームタイトルを設定します。",
-    "link-to-the-past": "ゼルダ：神々のトライフォース",
+    "link-to-the-past": "神々のトライフォース",
     "lttp-standard": "標準",
     "lttp-standard-triforce": "標準 トライフォース",
     "lttp-keysanity": "キーサニティ",
@@ -36,5 +36,9 @@
     "help-bug-header": "バグを報告する",
     "help-bug-line-1": "GitHubページでバグを報告できます：",
     "help-timer-line-3-web": "PAGEUP-タイマーの切り替え",
-    "help-timer-line-5-web": "PageDown-タイマーをリセット"
+    "help-timer-line-5-web": "PageDown-タイマーをリセット",
+    "ocarina-of-time": "ゼルダの伝説時のオカリナ",
+    "oot-standard": "標準",
+    "zelda1": "ゼルダの伝説",
+    "zelda1-standard": "標準"
 }

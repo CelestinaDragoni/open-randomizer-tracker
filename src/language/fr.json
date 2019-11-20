@@ -20,7 +20,7 @@
     "current-game-title": "Titre du jeu",
     "game-title": "Titre",
     "game-title-placeholder": "Entrez le texte pour configurer le titre de votre jeu.",
-    "link-to-the-past": "Zelda: un lien vers le passé",
+    "link-to-the-past": "La légende de Zelda: un lien vers le passé",
     "lttp-standard": "la norme",
     "lttp-standard-triforce": "Triforce la norme",
     "lttp-keysanity": "Keysanity",
@@ -36,5 +36,9 @@
     "help-bug-header": "Signaler des bugs",
     "help-bug-line-1": "Vous pouvez signaler des bugs sur notre page GitHub ici:",
     "help-timer-line-3-web": "PAGEUP - Basculer la minuterie",
-    "help-timer-line-5-web": "PAGEDOWN - Réinitialiser la minuterie"
+    "help-timer-line-5-web": "PAGEDOWN - Réinitialiser la minuterie",
+    "ocarina-of-time": "La légende de Zelda: Ocarina of Time",
+    "oot-standard": "la norme",
+    "zelda1": "LA légende de Zelda",
+    "zelda1-standard": "la norme"
 }

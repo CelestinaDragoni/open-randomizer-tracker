@@ -1,0 +1,234 @@
+{
+    "items": {
+        "fire": {
+            "label":"Fire Arrows"
+        },
+        "ice": {
+            "label":"Ice Arrows"
+        },
+        "light": {
+            "label":"Light Arrows"
+        },
+        "din": {
+            "label":"Din's Fire"
+        },
+        "farore": {
+            "label":"Farore's Wind"
+        },
+        "nayru": {
+            "label":"Nayru's Love"
+        },
+        "ocarina":{
+            "label":"Ocarina",
+            "progressive":true,
+            "styles":["fairy", "time"]
+        },
+        "deku-stick":{
+            "label":"Deku Stick"
+        },
+        "deku-nut":{
+            "label":"Deku Nut"
+        },
+        "slingshot":{
+            "label":"Fairy Slingshot"
+        },
+        "boomerang":{
+            "label":"Boomerang"
+        },
+        "bombs":{
+            "label":"Bombs"
+        },
+        "bombchu":{
+            "label":"Bombchu"
+        },
+        "lens":{
+            "label":"Lens of Truth"
+        },
+        "beans":{
+            "label":"Magic Beans",
+            "counter":10
+        },
+        "hookshot":{
+            "label":"Hookshot",
+            "progressive":true,
+            "styles":["hookshot", "longshot"]
+        },
+        "hammer": {
+            "label":"Megaton Hammer"
+        },
+        "bow":{
+            "label":"Fairy Bow"
+        },
+        "bottle":{
+            "label":"Bottle",
+            "counter":3
+        },
+        "bottle-letter": {
+            "label":"Bottle w/ Letter"
+        },
+        
+        "biggoron-quest": {
+            "label":"Biggoron Quest",
+            "progressive":true,
+            "styles":["egg", "cucco", "cojiro", "mushroom", "medicine", "saw", "broken-sword", "prescription", "frog", "eyedrops", "claimcheck"]
+        },
+        "happy-mask-quest": {
+            "label":"Happy Mask Quest",
+            "progressive":true,
+            "styles":["egg", "cucco", "letter", "keaton", "skull", "spooky", "bunny"]
+        },
+        "skulltula": {
+            "label":"Skulltula",
+            "counter":100
+        }
+    },
+    "equipment":{
+        "sword-kokiri":{
+            "label":"Kokiri Sword",
+            "required":true
+        },
+        "sword-master":{
+            "label":"Master Sword"
+        },
+        "sword-biggoron":{
+            "label":"Biggoron Sword"
+        },
+        "shield-deku":{
+            "label":"Deku Shield"
+        },
+        "shield-hylian":{
+            "label":"Hylian Shield"
+        },
+        "shield-mirror":{
+            "label":"Mirror Shield"
+        },
+        "tunic-kokiri":{
+            "label":"Kokiri Tunic",
+            "required":true
+        },
+        "tunic-goron":{
+            "label":"Goron Tunic"
+        },
+        "tunic-zora":{
+            "label":"Zora Tunic"
+        },
+        "boots-kokiri":{
+            "label":"Kokiri Boots",
+            "required":true
+        },
+        "boots-iron":{
+            "label":"Iron Boots"
+        },
+        "boots-hover":{
+            "label":"Hover Boots"
+        },
+        "deku-bag":{
+            "label":"Deku Bag",
+            "progressive":true,
+            "styles":["standard", "big", "biggest"]
+        },
+        "bomb-bag":{
+            "label":"Bomb Bag",
+            "progressive":true,
+            "styles":["standard", "big", "biggest"]
+        },
+        "quiver":{
+            "label":"Quiver",
+            "progressive":true,
+            "styles":["standard", "big", "biggest"]
+        },
+        "gauntlets":{
+            "label":"Gauntlets",
+            "progressive":true,
+            "styles":["bracelet", "silver", "golden"]
+        },
+        "scale":{
+            "label":"Scales",
+            "progressive":true,
+            "styles":["silver", "golden"]
+        },
+        "wallet":{
+            "label":"Wallet",
+            "progressive":true,
+            "styles":["adult", "giant"]
+        },
+        "magic":{
+            "label":"magic",
+            "progressive":true,
+            "styles":["standard", "double"]
+        },
+        "stone":{
+            "label":"Stone of Agony"
+        }
+    },
+    "songs" : {
+        "zelda": {"label":"Zelda's Lullaby"},
+        "epona": {"label":"Epona's Song"},
+        "saria": {"label":"Saria's Song"},
+        "sun": {"label":"Sun's Song"},
+        "time": {"label":"Song of Time"},
+        "storms": {"label":"Song of Storms"}
+    },
+    "songs-major": {
+        "minuet":{"label":"Minuet of Forest"},
+        "bolero":{"label":"Bolero of Fire"},
+        "serenade":{"label":"Serenade of Water"},
+        "requiem":{"label":"Requiem of Spirit"},
+        "nocturne":{"label":"Nocturne of Shadow"},
+        "prelude":{"label":"Prelude of Light"}
+    },
+    "dungeons":{
+        "tot":{
+            "keys":0,
+            "master":false,
+            "required":true,
+            "marker":4
+        },
+        "dek":{
+            "keys":0,
+            "master":false
+        },
+        "dod":{
+            "keys":0,
+            "master":false
+        },
+        "jab":{
+            "keys":0,
+            "master":false
+        },
+        "fot":{
+            "keys":5,
+            "master":true
+        },
+        "fit":{
+            "keys":8,
+            "master":true
+        },
+        "wat":{
+            "keys":6,
+            "master":true
+        },
+        "sht":{
+            "keys":5,
+            "master":true
+        },
+        "spt":{
+            "keys":5,
+            "master":true
+        }
+    },
+    "dungeons-mini":{
+        "ic":{
+            "keys":2,
+            "master":true
+        },
+        "botw":{
+            "keys":3,
+            "master":true
+        },
+        "gtg":{
+            "keys":9,
+            "master":true
+        }
+    }
+}
