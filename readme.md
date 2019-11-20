@@ -8,7 +8,10 @@ Simple cross-platform tracker for game randomizers such as Link to the Past. For
 Visit http://openrandomizertracker.com for the latest binary builds for Linux, Windows, or macOS.
 
 ## Current Features
-- Link to the Past Modules (Keysanity and Normal Including Triforce Trackers)
+- Various Trackers
+    - The Legend of Zelda
+    - The Legend of Zelda: A Link to the Past (Keysanity and Normal Including Triforce Trackers)
+    - The Legend of Zelda: Ocarina of Time
 - Timer and Title Support
 - Customization Support Such as (Font Selection, Colors, and Padding)
 - Multi-Language Support (English, Spanish, French, German, Japanese, Korean, and Russian)
